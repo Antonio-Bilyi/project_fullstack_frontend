@@ -15,7 +15,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 const sora = Sora({
-  variable: "--font-family-sora",
+  variable: "--font-family-sora", //в макеті --second-family
   subsets: ["latin-ext"],
   weight: ["400", "700"],
   display: "swap",

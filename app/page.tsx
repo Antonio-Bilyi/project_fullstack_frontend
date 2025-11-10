@@ -11,7 +11,7 @@ export default function Home() {
   return (
     // <main>
     <>
-      <section className={css.container}>
+      <section className={`${css.container} ${css.background}`} id="Hero">
         <Hero />
       </section>
       <section className={css.container}>
@@ -23,7 +23,7 @@ export default function Home() {
       <section className={css.container}>
         <TravellersList />
       </section>
-      <section className={css.container}>
+      <section className={css.container} id="Join">
         <Join />
       </section>
     </>
