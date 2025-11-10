@@ -3,10 +3,10 @@ import css from "./page.module.css";
 
 export const metadata: Metadata = {
   title: "Not found",
-  description: `Such page doesn't exists`,
+  description: `Такої сторінки не знайдено`,
   openGraph: {
-    title: "Travellers APP",
-    description: "An application for sharing travel experiences.",
+    title: "Подорожники",
+    description: "Проєкт, створений для тих, хто живе подорожами.",
     url: "https://goit-08-zustand.vercel.app/not-found",
     // https://goit-08-zustand.vercel.app - треба замінити на посилання задеплоїного на версель проекту
     images: [
