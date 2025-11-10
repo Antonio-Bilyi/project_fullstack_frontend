@@ -10,13 +10,23 @@ import Join from "@/components/Join/Join";
 export default function Home() {
   return (
     // <main>
-    <div className={css.container}>
-      <Hero />
-      <About />
-      <Popular />
-      <TravellersList />
-      <Join />
-    </div>
+    <>
+      <section className={css.container}>
+        <Hero />
+      </section>
+      <section className={css.container}>
+        <About />
+      </section>
+      <section className={css.container}>
+        <Popular />
+      </section>
+      <section className={css.container}>
+        <TravellersList />
+      </section>
+      <section className={css.container}>
+        <Join />
+      </section>
+    </>
     // </main>
   );
 }
