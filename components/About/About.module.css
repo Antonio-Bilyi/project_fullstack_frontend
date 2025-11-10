@@ -18,7 +18,7 @@
   font-size: 28px;
   line-height: 1.2;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: #000;
   font-family: "Sora", sans-serif;
 }
 
@@ -27,7 +27,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
+  color: #000;
 }
 
 .list {
@@ -41,8 +41,6 @@
 }
 
 .about_svg {
-  color: #fff;
-  fill: #fff;
   margin-bottom: 8px;
 }
 
@@ -52,7 +50,7 @@
   font-size: 20px;
   line-height: 1.3;
   letter-spacing: -0.01em;
-  color: #fff;
+  color: #000;
   margin-bottom: 8px;
 }
 
@@ -60,7 +58,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
-  color: #fff;
+  color: #000;
   font-family: "Nunito Sans", sans-serif;
 }
 
