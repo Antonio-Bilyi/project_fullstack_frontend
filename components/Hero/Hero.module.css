@@ -47,6 +47,20 @@
   font-weight: 500;
   height: 39px;
   font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  border: 1px solid #4169e1;
+  background: #e8eeff;
+  color: #000;
+}
+
+.button:active {
+  border: 1px solid #4169e1;
+  color: #fff;
+  background: #7a96ea;
 }
 
 @media only screen and (min-width: 768px) {
