@@ -1,0 +1,114 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: #e8eeff;
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  min-width: 250px;
+  max-width: 335px;
+  /* transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease; */
+}
+
+/* .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+} */
+
+.imageWrapper {
+  width: 112px;
+  height: 112px;
+  overflow: hidden;
+  border-radius: 100%;
+  margin-bottom: 24px;
+}
+
+.avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 287px;
+  height: 179px;
+}
+
+.name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #000;
+  margin: 0;
+}
+
+.description {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000;
+  line-height: 150%;
+  /* margin: 0 0 12px 0; */
+}
+
+.profileButton {
+  display: inline-block;
+  background-color: rgba(0, 0, 0, 0.05);
+  color: #000;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 12px 60px;
+  border-radius: 8px;
+  text-decoration: none;
+  /* transition: background-color 0.2s ease; */
+}
+
+/* .profileButton:hover {
+  background-color: #0059c9;
+} */
+
+/* планшет*/
+@media (min-width: 768px) {
+  .card {
+    max-width: 340px;
+  }
+
+  .profileButton {
+    padding: 12px 63px;
+  }
+}
+
+/*десктоп*/
+@media (min-width: 1024px) {
+  .card {
+    max-width: 310px;
+  }
+
+  .content {
+    width: 232px;
+    height: 200px;
+  }
+
+  .name {
+    font-size: 26px;
+    font-weight: 600;
+  }
+
+  .description {
+    font-size: 18px;
+    font-weight: 400;
+  }
+
+  .profileButton {
+    font-size: 18px;
+    font-weight: 500;
+    padding: 10px 37px;
+    border-radius: 8px;
+    text-decoration: none;
+    /* transition: background-color 0.2s ease; */
+  }
+}
