@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { login } from '@/lib/api/clientsApi/clientApi';
 import { logErrorResponse } from '@/app/api/_utils/utils';
-import { useUserAuthStore } from '@/lib/api/store/authStore';
+import { useUserAuthStore } from '@/lib/store/authStore';
 import LoginForm from '@/components/LoginForm/LoginForm';
 import toast, { Toaster } from 'react-hot-toast';
 import { FormikHelpers } from 'formik';
