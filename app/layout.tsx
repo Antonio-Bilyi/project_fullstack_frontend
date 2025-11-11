@@ -5,7 +5,7 @@ import "./globals.css";
 import TanStackProvider from "@/components/TanStackProvider/TanStackProvider";
 import Header from "@/components/Header/Header";
 import Footer from "@/components/Footer/Footer";
-// import AuthProvider from "@/components/AuthProvider/AuthProvider";
+import AuthProvider from "@/components/AuthProvider/AuthProvider";
 
 const nunitoSans = Nunito_Sans({
   variable: "--font-family-nunito", //в макеті --font-family
@@ -52,14 +52,14 @@ export default function RootLayout({
     <html lang="ua">
       <body className={`${nunitoSans.variable} ${sora.variable}`}>
         <TanStackProvider>
-          {/* <AuthProvider> */}
-          <Header />
-          <main>
-            {children}
-            {modal}
-          </main>
-          <Footer />
-          {/* </AuthProvider> */}
+          <AuthProvider>
+            <Header />
+            <main>
+              {children}
+              {modal}
+            </main>
+            <Footer />
+          </AuthProvider>
         </TanStackProvider>
       </body>
     </html>
