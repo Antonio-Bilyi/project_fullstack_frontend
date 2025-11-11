@@ -9,6 +9,7 @@
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  margin-bottom: 32px;
 }
 
 .title {
@@ -27,7 +28,6 @@
   line-height: 1.5;
   color: #fff;
   font-family: "Nunito Sans", sans-serif;
-  margin-bottom: 32px;
 }
 
 .button {
