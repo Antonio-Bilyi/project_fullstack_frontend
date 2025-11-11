@@ -2,7 +2,8 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from '../Join/Join.module.css';
-import { useUserAuthStore } from '@/lib/api/store/authStore';
+import { useUserAuthStore } from '@/lib/store/authStore';
+
 
 export default function JoinS() {
   const router = useRouter();
