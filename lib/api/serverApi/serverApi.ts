@@ -5,7 +5,7 @@ import type { AxiosResponse } from "axios";
 export const checkServerSession = async (): Promise<AxiosResponse> => {
   // Дістаємо поточні cookie
   const cookieStore =  cookies();
-  const res = await nextServer.get('/auth/session', {
+  const res = await nextServer.post('/auth/refresh', {
     headers: {
       // передаємо кукі далі
       Cookie: cookieStore.toString(),

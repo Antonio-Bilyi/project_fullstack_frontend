@@ -35,6 +35,6 @@ export const logout = async (): Promise<void> => {
 };
 
 export const checkSession = async (): Promise<boolean> => {
-  const res = await nextServer.get<{ success: boolean }>('/auth/session');
+  const res = await nextServer.post<{ success: boolean }>('/auth/refresh');
   return res.data.success;
 };
