@@ -6,20 +6,20 @@ type TravellerInfoCardProps = {
   id: string;
   name: string;
   description: string;
-  photoUrl: string;
+  avatarUrl: string;
 };
 
 export default function TravellerInfoCard({
   id,
   name,
   description,
-  photoUrl,
+  avatarUrl,
 }: TravellerInfoCardProps) {
   return (
     <div className={css.card}>
       <div className={css.imageWrapper}>
         <Image
-          src={photoUrl}
+          src={avatarUrl}
           alt={name}
           className={css.avatar}
           width={112}

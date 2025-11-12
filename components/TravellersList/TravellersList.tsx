@@ -1,4 +1,4 @@
-import TravellerInfoCard from "../TravellerInfoCard";
+import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
 import css from "./TravellersList.module.css";
 
 type Traveler = {
