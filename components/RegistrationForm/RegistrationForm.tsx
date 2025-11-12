@@ -3,6 +3,8 @@
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import css from './RegistrationForm.module.css';
+import Container from '../Container/Container';
+import Section from '../Section/Section';
 
 interface RegistrationFormProps {
   onSubmit: (
@@ -28,6 +30,8 @@ const validationSchema = Yup.object().shape({
 
 export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
   return (
+    <Section classes={["hero", "background"]}>
+      <Container>
     <main className={css.mainContent}>
       <ul className={css.wrapper}>
         <li className={`${css.wrapperItem} ${css.wrapperItemBorder}`}>Реєстрація</li>
@@ -85,6 +89,8 @@ export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
           </Form>
         )}
       </Formik>
-    </main>
+        </main>
+         </Container>
+    </Section>
   );
 }

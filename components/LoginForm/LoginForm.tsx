@@ -3,6 +3,9 @@
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import css from './LoginForm.module.css';
+import Container from '../Container/Container';
+import Section from '../Section/Section';
+
 
 interface LoginFormProps {
   onSubmit: (
@@ -24,6 +27,8 @@ const validationSchema = Yup.object().shape({
 
 export default function LoginForm({ onSubmit }: LoginFormProps) {
   return (
+    <Section classes={["hero", "background"]}>
+      <Container>
     <main className={css.mainContent}>
       <ul className={css.wrapper}>
         <li className={css.wrapperItem}>Реєстрація</li>
@@ -87,6 +92,8 @@ export default function LoginForm({ onSubmit }: LoginFormProps) {
           </Form>
         )}
       </Formik>
-    </main>
+        </main>
+         </Container>
+    </Section>
   );
 }
