@@ -1,6 +1,6 @@
 .join {
     max-width: 375px;
-    padding-top: 19.6px;
+    padding-top: 20px;
     padding-bottom: 20px;
 }
 
@@ -9,8 +9,6 @@
     align-items: flex-start;
     justify-content: flex-start;
     flex-direction: column;
-
-
 }
 
 .title {
@@ -31,7 +29,6 @@
     color: #fff;
     font-family: "Nunito Sans", sans-serif;
     margin-bottom: 24px;
-
 }
 
 .button {
@@ -71,16 +68,8 @@
 @media only screen and (min-width: 768px) {
     .join {
         max-width: 768px;
-        padding-top: 31.96px;
+        padding-top: 32px;
         padding-bottom: 32px;
-    }
-
-    .text {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-direction: column;
-        padding-right: 146px;
     }
 
     .title {
@@ -89,7 +78,16 @@
         line-height: 1.1;
         letter-spacing: -0.01em;
         color: #fff;
-        max-width: 600px;
+
+
+    }
+
+    .text {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-right: 70px;
     }
 
     .button {
@@ -102,7 +100,8 @@
 @media only screen and (min-width: 1440px) {
     .join {
         max-width: 1440px;
-        padding-bottom: 78.34px;
+        padding-top: 78px;
+        padding-bottom: 78px;
     }
 
     .title {
@@ -113,7 +112,6 @@
         color: #fff;
         max-width: 558px;
         padding-right: 24px;
-        padding-top: 77.66px;
     }
 
     .text {
@@ -126,5 +124,7 @@
         font-size: 16px;
         width: 169px;
         height: 48px;
+
     }
+
 }
