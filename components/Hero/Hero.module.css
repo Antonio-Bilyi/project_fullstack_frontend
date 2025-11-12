@@ -1,14 +1,15 @@
-.hero {
+/* .hero {
   max-width: 375px;
   padding-top: 196px;
   padding-bottom: 331px;
-}
+} */
 
 .hero_text {
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
   flex-direction: column;
+  margin-bottom: 32px;
 }
 
 .title {
@@ -27,7 +28,6 @@
   line-height: 1.5;
   color: #fff;
   font-family: "Nunito Sans", sans-serif;
-  margin-bottom: 32px;
 }
 
 .button {
@@ -64,11 +64,11 @@
 }
 
 @media only screen and (min-width: 768px) {
-  .hero {
+  /* .hero {
     max-width: 768px;
     padding-top: 244px;
     padding-bottom: 117px;
-  }
+  } */
 
   .hero-text {
     display: flex;
@@ -94,10 +94,10 @@
 }
 
 @media only screen and (min-width: 1440px) {
-  .hero {
+  /* .hero {
     max-width: 1440px;
     padding-bottom: 347px;
-  }
+  } */
 
   .hero_text {
     max-width: 759px;

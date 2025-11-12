@@ -23,7 +23,7 @@ export default function Home() {
       <section className={css.container}>
         <TravellersList />
       </section>
-      <section className={css.container} id="Join">
+      <section className={`${css.container} ${css.joinBackground}`} id="Join">
         <Join />
       </section>
     </>
