@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import css from './LoginForm.module.css';
 import Container from '../Container/Container';
 import Section from '../Section/Section';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 
 interface LoginFormProps {
@@ -26,14 +28,20 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function LoginForm({ onSubmit }: LoginFormProps) {
+  const pathname = usePathname();
   return (
     <Section classes={["hero", "background"]}>
       <Container>
     <main className={css.mainContent}>
-      <ul className={css.wrapper}>
-        <li className={css.wrapperItem}>Реєстрація</li>
-        <li className={`${css.wrapperItem} ${css.wrapperItemBorder}`}>Вхід</li>
-      </ul>
+     {/* Вкладки Реєстрація / Вхід */}
+          <ul className={css.wrapper}>
+            <li className={`${css.wrapperItem} ${pathname === '/auth/register' ? css.active : ''}`}>
+              <Link href="/auth/register">Реєстрація</Link>
+            </li>
+            <li className={`${css.wrapperItem} ${pathname === '/auth/login' ? css.active : ''}`}>
+              <Link href="/auth/login">Вхід</Link>
+            </li>
+          </ul>
 
       <h2 className={css.formTitle}>Вхід</h2>
       <p className={css.formText}>Вітаємо знову у спільноті мандрівників</p>
