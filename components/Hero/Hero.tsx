@@ -4,8 +4,8 @@ import Section from "../Section/Section";
 
 export default function Hero() {
   return (
-    <Section classes={["hero"]}>
-      <Container classes={["background"]}>
+    <Section classes={["hero", "background"]}>
+      <Container>
         <div className={css.hero_text}>
           <h1 className={css.title}>Відкрийте світ подорожей з нами!</h1>
           <p className={css.text}>

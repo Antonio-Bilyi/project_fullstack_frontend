@@ -7,15 +7,15 @@
   padding: 196px 0 331px;
 }
 
-/* .background {
+.background {
   background-image: image-set(
-    url("../../public/hero/phone1x.webp") 1x,
-    url("../../public/hero/phone2x.webp") 2x
+    url("/hero/phone1x.webp") 1x,
+    url("/hero/phone2x.webp") 2x
   );
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-} */
+}
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
@@ -23,12 +23,12 @@
     padding: 244px 0 117px;
   }
 
-  /* .background {
+  .background {
     background-image: image-set(
-      url("../../public/hero/tab1x.webp") 1x,
-      url("../../public/hero/tab2x.webp") 2x
+      url("/hero/tab1x.webp") 1x,
+      url("/hero/tab2x.webp") 2x
     );
-  } */
+  }
 }
 
 /* Styles for Desktop devices */
@@ -41,10 +41,10 @@
     padding: 196px 0 331px;
   }
 
-  /* .background {
+  .background {
     background-image: image-set(
-      url("../../public/hero/desk1x.webp") 1x,
-      url("../../public/hero/desk2x.webp") 2x
+      url("/hero/desk1x.webp") 1x,
+      url("/hero/desk2x.webp") 2x
     );
-  } */
+  }
 }

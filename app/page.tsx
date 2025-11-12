@@ -11,11 +11,21 @@ export default function Home() {
   return (
     // <main>
     <>
-      <Hero />
-      <About />
-      <Popular />
-      <TravellersList />
-      <Join />
+      <section className={`${css.container} ${css.background}`} id="Hero">
+        <Hero />
+      </section>
+      <section className={css.container}>
+        <About />
+      </section>
+      <section className={css.container}>
+        <Popular />
+      </section>
+      <section className={css.container}>
+        <TravellersList />
+      </section>
+      <section className={`${css.container} ${css.joinBackground}`} id="Join">
+        <Join />
+      </section>
     </>
     // </main>
   );
