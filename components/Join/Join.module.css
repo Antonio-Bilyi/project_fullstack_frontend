@@ -1,0 +1,130 @@
+.join {
+    max-width: 375px;
+    padding-top: 19.6px;
+    padding-bottom: 20px;
+}
+
+.join_text {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+
+}
+
+.title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    color: #fff;
+    font-family: "Sora", sans-serif;
+    margin-bottom: 24px;
+    display: flex;
+}
+
+.text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    color: #fff;
+    font-family: "Nunito Sans", sans-serif;
+    margin-bottom: 24px;
+
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    max-width: 295px;
+
+    border-radius: 8px;
+    padding: 12px 83px;
+    margin: 0px;
+    background: #4169e1;
+    color: #fff;
+    border: 1px solid #4169e1;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 500;
+    height: 49px;
+    font-family: "Nunito Sans", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    border: 1px solid #4169e1;
+    background: #e8eeff;
+    color: #000;
+}
+
+.button:active {
+    border: 1px solid #4169e1;
+    color: #fff;
+    background: #7a96ea;
+}
+
+@media only screen and (min-width: 768px) {
+    .join {
+        max-width: 768px;
+        padding-top: 31.96px;
+        padding-bottom: 32px;
+    }
+
+    .text {
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        flex-direction: column;
+        padding-right: 146px;
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: #fff;
+        max-width: 600px;
+    }
+
+    .button {
+        font-size: 16px;
+        width: 115px;
+        height: 39px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .join {
+        max-width: 1440px;
+        padding-bottom: 78.34px;
+    }
+
+    .title {
+        font-weight: 700;
+        font-size: 48px;
+        line-height: 1.1;
+        letter-spacing: -0.01em;
+        color: #fff;
+        max-width: 558px;
+        padding-right: 24px;
+        padding-top: 77.66px;
+    }
+
+    .text {
+        max-width: 759px;
+        font-size: 20px;
+        padding-right: 284px;
+    }
+
+    .button {
+        font-size: 16px;
+        width: 169px;
+        height: 48px;
+    }
+}

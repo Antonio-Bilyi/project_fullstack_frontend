@@ -1,11 +1,11 @@
 'use client';
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import styles from '../Join/Join.module.css';
+import css from '../Join/Join.module.css';
 import { useUserAuthStore } from '@/lib/store/authStore';
 
 
-export default function JoinS() {
+export default function Join() {
   const router = useRouter();
   const { isAuthenticated, setUser, clearIsAuthenticated } = useUserAuthStore();
 
@@ -41,14 +41,14 @@ export default function JoinS() {
   };
 
   return (
-    <section className={styles.joinSection}>
-      <div className={styles.container}>
-        <h2 className={styles.title}>Приєднуйтесь до нашої спільноти</h2>
-        <p className={styles.text}>
+    <section className={css.join}>
+      <div className={css.container}>
+        <h2 className={css.title}>Приєднуйтесь до нашої спільноти</h2>
+        <p className={css.text}>
           Долучайтеся до мандрівників, які діляться своїми історіями та надихають на нові пригоди.
         </p>
 
-        <button onClick={handleClick} className={styles.button}>
+        <button onClick={handleClick} className={css.button}>
           {isAuthenticated ? 'Збережені' : 'Зареєструватися'}
         </button>
       </div>
