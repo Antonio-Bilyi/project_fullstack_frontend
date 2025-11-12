@@ -18,7 +18,15 @@ export default function TravellerInfoCard({
   return (
     <div className={css.card}>
       <div className={css.imageWrapper}>
-        <Image src={photoUrl} alt={name} className={css.avatar} />
+        <Image
+          src={photoUrl}
+          alt={name}
+          className={css.avatar}
+          width={112}
+          height={112}
+          decoding="async"
+          loading="lazy"
+        />
       </div>
 
       <div className={css.content}>
