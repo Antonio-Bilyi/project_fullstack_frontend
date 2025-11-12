@@ -20,8 +20,8 @@ const MessageNoStories: React.FC<MessageNoStoriesProps> = ({ variant  }) => {
       break;
     case 'saved':
       text = 'У вас ще немає збережених історій, мершій збережіть вашу першу історію!';
-      buttonText = 'Опублікувати історію';
-      route = '/new-story';
+      buttonText = 'До історій';
+      route = '/stories';
       break;
     case 'other':
       text = 'Цей користувач ще не публікував історій';
