@@ -8,15 +8,15 @@ interface ContainerProps {
 }
 
 const Container = ({ children, classes = [] }: ContainerProps) => {
-  const mainClass = css.container; //обов'язковий клас
+  const allClasses = [
+    css.container, // обов'язковий клас
+    ...classes.map((cl) => css[cl] ?? cl), // мапимо модульні класи
+  ].filter(Boolean);
 
-  classes.push(mainClass);
+  const className = allClasses.join(" ");
 
-  const allClasses = classes
-    .map((cl) => css[cl] ?? cl) // тягнемо з модуля, якщо є
-    .join(" ");
-
-  return <div className={allClasses}> {children} </div>;
+  // console.log("ContainerClassName: ", className);
+  return <div className={className}> {children} </div>;
 };
 
 export default Container;

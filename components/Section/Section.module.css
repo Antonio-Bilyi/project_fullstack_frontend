@@ -3,7 +3,7 @@
   padding: 64px 0;
 }
 
-.hero {
+.section.hero {
   padding: 196px 0 331px;
 }
 
@@ -34,11 +34,11 @@
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
   .section {
-    padding: 244px 0 347px;
+    padding: 72px 0;
   }
 
   .hero {
-    padding: 196px 0 331px;
+    padding: 244px 0 347px;
   }
 
   .background {
