@@ -46,7 +46,7 @@
 }
 
 @media only screen and (min-width: 768px) {
-    .container {
+    .block {
         padding: 40px 32px;
     }
 }
