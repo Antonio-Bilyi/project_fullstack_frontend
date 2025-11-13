@@ -39,7 +39,7 @@ const MessageNoStories: React.FC<MessageNoStoriesProps> = ({ variant  }) => {
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.block}>
       <p className={styles.message}>{text}</p>
       <button className={styles.button} onClick={handleClick}>
         {buttonText}
