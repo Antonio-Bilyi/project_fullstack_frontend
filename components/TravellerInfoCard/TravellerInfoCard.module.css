@@ -9,15 +9,15 @@
   min-width: 250px;
   max-width: 335px;
   gap: 24px;
-  /* transition:
+  transition:
     transform 0.2s ease,
-    box-shadow 0.2s ease; */
+    box-shadow 0.2s ease;
 }
 
-/* .card:hover {
+.card:hover {
   transform: translateY(-4px);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
-} */
+}
 
 .imageWrapper {
   width: 112px;
@@ -45,6 +45,9 @@
   font-weight: 600;
   color: #000;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .description {
@@ -76,7 +79,7 @@
 }
 
 .profileButton:hover {
-  background-color: rgba(0, 0, 0, 0.1); /* темнее серый */
+  background-color: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);
 }
 
