@@ -33,7 +33,7 @@ const validationSchema = Yup.object().shape({
 export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
     const pathname = usePathname();
   return (
-    <Section classes={["hero", "background"]}>
+    <Section>
       <Container>
     <main className={css.mainContent}>
        {/* Вкладки Реєстрація / Вхід */}
