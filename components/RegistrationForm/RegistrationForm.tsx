@@ -3,6 +3,10 @@
 import { Formik, Form, Field, ErrorMessage, FormikHelpers } from 'formik';
 import * as Yup from 'yup';
 import css from './RegistrationForm.module.css';
+import Container from '../Container/Container';
+import Section from '../Section/Section';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface RegistrationFormProps {
   onSubmit: (
@@ -27,12 +31,20 @@ const validationSchema = Yup.object().shape({
 });
 
 export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
+    const pathname = usePathname();
   return (
+    <Section>
+      <Container>
     <main className={css.mainContent}>
-      <ul className={css.wrapper}>
-        <li className={`${css.wrapperItem} ${css.wrapperItemBorder}`}>Реєстрація</li>
-        <li className={css.wrapperItem}>Вхід</li>
-      </ul>
+       {/* Вкладки Реєстрація / Вхід */}
+          <ul className={css.wrapper}>
+            <li className={`${css.wrapperItem} ${pathname === '/auth/register' ? css.active : ''}`}>
+              <Link href="/auth/register">Реєстрація</Link>
+            </li>
+            <li className={`${css.wrapperItem} ${pathname === '/auth/login' ? css.active : ''}`}>
+              <Link href="/auth/login">Вхід</Link>
+            </li>
+          </ul>
 
       <h2 className={css.formTitle}>Реєстрація</h2>
       <p className={css.formText}>Раді Вас бачити у спільноті мандрівників!</p>
@@ -85,6 +97,8 @@ export default function RegistrationForm({ onSubmit }: RegistrationFormProps) {
           </Form>
         )}
       </Formik>
-    </main>
+        </main>
+         </Container>
+    </Section>
   );
 }
