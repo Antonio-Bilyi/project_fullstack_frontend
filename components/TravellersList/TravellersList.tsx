@@ -1,4 +1,5 @@
-// import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
+import Link from "next/link";
+import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
 import css from "./TravellersList.module.css";
 
 type Traveler = {
@@ -22,15 +23,19 @@ export default function TravellersList({
   const displayedTravelers = limit ? travelers.slice(0, limit) : travelers;
   return (
     <div className={css.wrapper}>
-      <div className={css.cardsWrapper}>
-        {/* {displayedTravelers.map((traveler) => (
-          <TravellerInfoCard key={traveler.id} {...traveler} />
-        ))} */}
-      </div>
+      <ul className={css.cardsWrapper}>
+        {displayedTravelers.map((traveler) => (
+          <li key={traveler.id} className={css.cardItem}>
+            <TravellerInfoCard {...traveler} />
+          </li>
+        ))}
+      </ul>
 
       {showPagination && (
         <div className={css.pagination}>
-          <button className={css.paginationBtn}>Переглянути всіх</button>
+          <button className={css.paginationBtn}>
+            <Link href="/travellers">Переглянути всіх</Link>
+          </button>
         </div>
       )}
     </div>
