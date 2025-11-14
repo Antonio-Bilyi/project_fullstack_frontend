@@ -20,19 +20,20 @@ export default function Join() {
 
   return (
     <Section>
-      <Container classes={["join", "joinBackground"]}>
+      <Container>
         <div className={css.join}>
-          <h2 className={css.title}>Приєднуйтесь до нашої спільноти</h2>
+          <h2 className={css.title}>
+            Приєднуйтесь до нашої <span className={css.break}>спільноти</span>
+          </h2>
           <p className={css.text}>
-            Долучайтеся до мандрівників, які діляться своїми історіями та надихають на нові пригоди.
+            Долучайтеся до мандрівників, які діляться своїми історіями та
+            надихають на нові пригоди.
           </p>
           <button className={css.button} onClick={handleClick}>
-            {isAuthenticated ? "Перейти в профіль" : "Зареєструватися"}
+            {isAuthenticated ? "Збережені" : "Зареєструватися"}
           </button>
         </div>
       </Container>
     </Section>
   );
 }
-
-
