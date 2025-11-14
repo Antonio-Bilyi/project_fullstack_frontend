@@ -19,8 +19,8 @@ export default function Join() {
   };
 
   return (
-    <Section classes={["join", "joinBackground"]}>
-      <Container >
+    <Section>
+      <Container classes={["join", "joinBackground"]}>
         <div className={css.join}>
           <h2 className={css.title}>Приєднуйтесь до нашої спільноти</h2>
           <p className={css.text}>

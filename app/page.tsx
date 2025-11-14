@@ -1,5 +1,3 @@
-// стилі
-import css from "./page.module.css";
 // компоненти
 import Hero from "@/components/Hero/Hero";
 import Popular from "@/components/Popular/Popular";
