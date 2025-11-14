@@ -1,0 +1,46 @@
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .mainContent {
+    width: 100%;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .mainContent {
+    width: 335px;
+  }
+}
+
+.title {
+/* color: #000; */
+font-size: 32px;
+line-height: 1.1;
+text-align: center;
+margin-bottom: 24px;
+}
+
+.page{
+    padding: 32px 20px 64px;
+}
+
+@media only screen and (min-width: 768px) {
+.page{
+width: 704px;
+padding: 32px 32px 64px;
+}
+
+.title{
+font-size: 48px;
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.page{
+width: 1312px;
+padding: 48px 64px 72px;
+}
+
+.title{
+font-size: 56px;
+}
+}
