@@ -1,6 +1,6 @@
 .ourTravelersSection {
-  width: 335px;
-  max-width: 1280px;
+  max-width: 335px;
+  width: 100%;
 }
 
 .travellersHeader {
@@ -17,7 +17,7 @@
 /* планшет */
 @media (min-width: 768px) {
   .ourTravelersSection {
-    width: 704px;
+    width: 100%;
     max-width: 1280px;
   }
 
@@ -32,7 +32,7 @@
 /* десктоп */
 @media (min-width: 1440px) {
   .ourTravelersSection {
-    width: 1312px;
+    width: 100%;
     height: 590px;
     max-width: 1312px;
   }

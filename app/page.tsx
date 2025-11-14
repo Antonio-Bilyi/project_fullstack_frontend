@@ -2,9 +2,9 @@
 import css from "./page.module.css";
 // компоненти
 import Hero from "@/components/Hero/Hero";
+import About from "@/components/About/About";
 import Popular from "@/components/Popular/Popular";
 import OurTravellers from "@/components/OurTravellers/OurTravellers";
-import About from "@/components/About/About";
 import Join from "@/components/Join/Join";
 
 export default function Home() {
@@ -409,28 +409,18 @@ export default function Home() {
   return (
     // <main>
     <>
-      <section className={`${css.container} ${css.background}`} id="Hero">
-        <Hero />
-      </section>
-      <section className={css.container}>
-        <About />
-      </section>
-      <section className={css.container}>
-        <Popular />
-      </section>
-      <section className={css.container}>
-        <OurTravellers
-          travelers={travelers.map((t) => ({
-            id: t._id.$oid,
-            name: t.name,
-            avatarUrl: t.avatarUrl,
-            description: t.description,
-          }))}
-        />
-      </section>
-      <section className={`${css.container} ${css.joinBackground}`} id="Join">
-        <Join />
-      </section>
+      <Hero />
+      <About />
+      <Popular />
+      <OurTravellers
+        travelers={travelers.map((t) => ({
+          id: t._id.$oid,
+          name: t.name,
+          avatarUrl: t.avatarUrl,
+          description: t.description,
+        }))}
+      />
+      <Join />
     </>
     // </main>
   );
