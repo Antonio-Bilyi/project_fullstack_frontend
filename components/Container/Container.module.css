@@ -16,6 +16,16 @@
   background-repeat: no-repeat; 
 }*/
 
+.joinBackground {
+  background-image: image-set(
+    url("/join/phone1x.webp") 1x,
+    url("/join/phone2x.webp") 2x
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+   border-radius: 32px;
+}
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .container {
@@ -34,6 +44,14 @@
     background-repeat: no-repeat; 
   }*/
 }
+
+ .joinBackground {
+    background-image: image-set(
+      url("/join/tab1x.webp") 1x,
+      url("/join/tab2x.webp") 2x
+    );
+  }
+
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
   .container {
@@ -51,4 +69,11 @@
     background-position: center;
     background-repeat: no-repeat; 
   } */
+
+        .joinBackground {
+    background-image: image-set(
+      url("/join/desk1x.webp") 1x,
+      url("/join/desk2x.webp") 2x
+    );
+  }
 }
