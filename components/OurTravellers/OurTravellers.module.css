@@ -1,0 +1,46 @@
+.ourTravelersSection {
+  width: 335px;
+  max-width: 1280px;
+}
+
+.travellersHeader {
+  width: 335px;
+  height: 34px;
+  max-width: 768px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+/* планшет */
+@media (min-width: 768px) {
+  .ourTravelersSection {
+    width: 704px;
+    max-width: 1280px;
+  }
+
+  .travellersHeader {
+    width: 704px;
+    height: 53px;
+    max-width: 768px;
+    font-size: 44px;
+  }
+}
+
+/* десктоп */
+@media (min-width: 1440px) {
+  .ourTravelersSection {
+    width: 1312px;
+    height: 590px;
+    max-width: 1312px;
+  }
+
+  .travellersHeader {
+    width: 768px;
+    height: 62px;
+    max-width: 768px;
+    font-size: 52px;
+  }
+}

@@ -74,13 +74,19 @@
   max-width: 100%;
   box-sizing: border-box;
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .profileButton:hover {
   background-color: rgba(0, 0, 0, 0.1);
   border-color: rgba(0, 0, 0, 0.2);
+}
+
+.profileButton:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
 }
 
 /* планшет*/
@@ -100,7 +106,7 @@
 }
 
 /*десктоп*/
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .card {
     max-width: 310px;
   }
