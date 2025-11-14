@@ -5,22 +5,7 @@ import TravellersList from "../../../components/TravellersList/TravellersList";
 import css from "./travellers.module.css";
 import Container from '../../../components/Container/Container';
 import Section from '../../../components/Section/Section';
-
-// Тип для мандрівника всередині компоненту
-type Traveler = {
-  id: string;
-  name: string;
-  description: string;
-  avatarUrl: string;
-};
-
-// Тип для відповіді від API
-type UserFrom = {
-  _id: string;
-  name: string;
-  description?: string;
-  avatarUrl: string;
-};
+import { getAllTravelers, Traveler } from "../../../lib/api/clientsApi/getAllTravelers";
 
 export default function Travellers() {
   const getInitialVisibleCount = () => {
@@ -37,18 +22,8 @@ export default function Travellers() {
   useEffect(() => {
     async function loadUsers() {
       try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users?page=1&perPage=100`);
-        if (!res.ok) throw new Error(`Помилка запиту: ${res.status}`);
-        const json = await res.json();
-
-        const mapped: Traveler[] = (json.data as UserFrom[]).map((u) => ({
-          id: u._id,
-          name: u.name,
-          description: u.description ?? "Мандрівник не залишив опис",
-          avatarUrl: u.avatarUrl,
-        }));
-
-        setTravelers(mapped);
+        const allTravelers = await getAllTravelers();
+        setTravelers(allTravelers);
       } catch (error) {
         console.error("Помилка завантаження користувачів:", error);
       }
