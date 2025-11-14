@@ -8,8 +8,9 @@ import AuthNavigation from "../AuthNavigationFooter/AuthNavigationFooter";
 export default function Footer() {
   return (
 
-    <footer className={css.footer}>
-      <Container>
+  <footer className={css.footer}>
+    <Container>
+      <div className={css.footer_box}>
         <div className={css.footer_content}>
           <Link href='/' aria-label="Home" target="blank" className={css.footer_logo}>
             <svg width={20} height={22} className={css.footer_logo_item}>
@@ -52,16 +53,16 @@ export default function Footer() {
             </li>
           </ul>
         </div>
-
-        <AuthNavigation />
+          <AuthNavigation />
+      </div>
 
         <p className={css.footer_privacy_policy}>© 2025 Подорожники. Усі права захищені.</p>
 
           
 
      
-      </Container>
-    </footer>
+    </Container>
+  </footer>
   )
  
   

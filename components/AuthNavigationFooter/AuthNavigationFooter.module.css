@@ -1,17 +1,16 @@
 .footer_navigation_list {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
     align-items: center;
     justify-content: center;
-    margin-bottom: 32px;
 }
 
 .footer_navigation_list_item {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #000;
+    /* font-weight: 400; */
+    /* font-size: 16px;
+    line-height: 1.5; */
+    color: var(--foreground);
 }
 
 .footer_navigation_list::after {
@@ -33,12 +32,15 @@
         bottom: -24;
         left: 0;
     }
+}
 
 
+@media only screen and (min-width: 1440px) {
+    .footer_navigation_list::after {
+        display: none;
+    }
 
-
-
-
-
-
+    .footer_navigation_list_item {
+        font-size: 18px;
+    }
 }
