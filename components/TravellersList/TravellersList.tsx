@@ -23,11 +23,13 @@ export default function TravellersList({
   const displayedTravelers = limit ? travelers.slice(0, limit) : travelers;
   return (
     <div className={css.wrapper}>
-      <div className={css.cardsWrapper}>
+      <ul className={css.cardsWrapper}>
         {displayedTravelers.map((traveler) => (
-          <TravellerInfoCard key={traveler.id} {...traveler} />
+          <li key={traveler.id} className={css.cardItem}>
+            <TravellerInfoCard {...traveler} />
+          </li>
         ))}
-      </div>
+      </ul>
 
       {showPagination && (
         <div className={css.pagination}>
