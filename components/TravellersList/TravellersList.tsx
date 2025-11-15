@@ -12,13 +12,13 @@ type Traveler = {
 type TravellersListProps = {
   travelers: Traveler[];
   limit?: number;
-  showPagination?: boolean;
+  showViewAllButton?: boolean;
 };
 
 export default function TravellersList({
   travelers,
   limit,
-  showPagination,
+  showViewAllButton,
 }: TravellersListProps) {
   const displayedTravelers = limit ? travelers.slice(0, limit) : travelers;
   return (
@@ -31,7 +31,7 @@ export default function TravellersList({
         ))}
       </ul>
 
-      {showPagination && (
+      {showViewAllButton && (
         <div className={css.pagination}>
           <button className={css.paginationBtn}>
             <Link href="/travellers">Переглянути всіх</Link>

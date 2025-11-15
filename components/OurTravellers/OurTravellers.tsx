@@ -20,7 +20,7 @@ export default function OurTravellers({ travelers }: OurTravellersProps) {
       <Container>
         <section className={css.ourTravelersSection}>
           <h2 className={css.travellersHeader}>Наші Мандрівники</h2>
-          <TravellersList travelers={travelers} limit={4} showPagination />
+          <TravellersList travelers={travelers} limit={4} showViewAllButton />
         </section>
       </Container>
     </Section>
