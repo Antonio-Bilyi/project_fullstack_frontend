@@ -32,8 +32,8 @@ export default function TravellersList({
       </ul>
 
       {showViewAllButton && (
-        <div className={css.pagination}>
-          <button className={css.paginationBtn}>
+        <div className={css.buttonWrapper}>
+          <button className={css.viewAllButton}>
             <Link href="/travellers">Переглянути всіх</Link>
           </button>
         </div>
