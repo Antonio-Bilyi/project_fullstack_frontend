@@ -11,7 +11,23 @@
     /* font-size: 16px;
     line-height: 1.5; */
     color: var(--foreground);
+
+    padding: 0px 8px;
+    cursor: pointer;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+    transition: border-color 0.25s ease, background-color 0.25s ease;
 }
+
+.footer_navigation_list_item:hover {
+    border-color: var(--foreground);
+}
+
+.footer_navigation_list_item:active {
+    background-color: #d8d8d8;
+}
+
 
 .footer_navigation_list::after {
     content: '';
