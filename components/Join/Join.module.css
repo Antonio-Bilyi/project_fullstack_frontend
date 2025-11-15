@@ -1,130 +1,130 @@
 .join {
-    max-width: 375px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-}
-
-.join_text {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
+  width: 100%;
+  padding: 20px;
+  background-image: image-set(
+    url("/join/phone1x.webp") 1x,
+    url("/join/phone2x.webp") 2x
+  );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 24px;
 }
 
 .title {
-    font-weight: 700;
-    font-size: 32px;
-    line-height: 1.1;
-    letter-spacing: -0.01em;
-    color: #fff;
-    font-family: "Sora", sans-serif;
-    margin-bottom: 24px;
-    display: flex;
+  font-weight: 700;
+  font-size: 26px;
+  line-height: 1.2;
+  /* letter-spacing: -0.01em; */
+  color: #fff;
+  margin-bottom: 16px;
 }
 
 .text {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-    color: #fff;
-    font-family: "Nunito Sans", sans-serif;
-    margin-bottom: 24px;
+  color: #fff;
+  font-family: "Nunito Sans", sans-serif;
+  margin-bottom: 24px;
 }
 
 .button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    width: 100%;
+  width: 100%;
 
-    border-radius: 8px;
-    padding: 12px 83px;
-    margin: 0px;
-    background: #4169e1;
-    color: #fff;
-    border: 1px solid #4169e1;
-    text-decoration: none;
-    font-size: 18px;
-    font-weight: 500;
-    height: 49px;
-    font-family: "Nunito Sans", sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease;
+  border-radius: 8px;
+  padding: 12px 83px;
+  margin: 0px;
+  background: #4169e1;
+  color: #fff;
+  border: 1px solid #4169e1;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  height: 48px;
+  font-family: "Nunito Sans", sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
 }
 
 .button:hover {
-    border: 1px solid #4169e1;
-    background: #e8eeff;
-    color: #000;
+  border: 1px solid #4169e1;
+  background: #e8eeff;
+  color: #000;
 }
 
 .button:active {
-    border: 1px solid #4169e1;
-    color: #fff;
-    background: #7a96ea;
+  border: 1px solid #4169e1;
+  color: #fff;
+  background: #7a96ea;
 }
 
 @media only screen and (min-width: 768px) {
-    .join {
-        max-width: 768px;
-        padding-top: 32px;
-        padding-bottom: 32px;
-    }
+  .join {
+    padding: 32px;
+    background-image: image-set(
+      url("/join/tab1x.webp") 1x,
+      url("/join/tab2x.webp") 2x
+    );
+  }
 
-    .title {
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 1.1;
-        letter-spacing: -0.01em;
-        color: #fff;
+  .title {
+    font-size: 32px;
+    line-height: 1.1;
+    width: 558px;
+    margin-bottom: 8px;
+  }
 
+  .break {
+    display: block;
+  }
 
-    }
+  .text {
+    width: 558px;
+    margin-bottom: 16px;
+  }
 
-    .text {
-        display: flex;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-direction: column;
-        padding-right: 70px;
-    }
+  .button {
+    line-height: 1.5;
+    width: 153px;
 
-    .button {
-        font-size: 16px;
-        width: 115px;
-        height: 39px;
-    }
+    padding: 12px 12px;
+
+    font-size: 16px;
+    font-weight: 500;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
-    .join {
-        max-width: 1440px;
-        padding-top: 78px;
-        padding-bottom: 78px;
-    }
+  .join {
+    padding: 78px 64px;
+    background-image: image-set(
+      url("/join/desk1x.webp") 1x,
+      url("/join/desk2x.webp") 2x
+    );
+  }
 
-    .title {
-        font-weight: 700;
-        font-size: 48px;
-        line-height: 1.1;
-        letter-spacing: -0.01em;
-        color: #fff;
-        max-width: 558px;
-        padding-right: 24px;
-    }
+  .title {
+    font-size: 48px;
+    line-height: 1.2;
+    margin-bottom: 24px;
+    width: 492px;
+  }
 
-    .text {
-        max-width: 759px;
-        font-size: 20px;
-        padding-right: 284px;
-    }
+  .break {
+    display: inline;
+  }
 
-    .button {
-        font-size: 16px;
-        width: 169px;
-        height: 48px;
+  .text {
+    font-size: 20px;
+    margin-bottom: 32px;
+    width: 492px;
+  }
 
-    }
-
+  .button {
+    font-size: 18px;
+    line-height: 1.5;
+    width: 169px;
+  }
 }
