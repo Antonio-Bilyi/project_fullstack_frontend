@@ -56,7 +56,7 @@ export default function Footer() {
           <AuthNavigation />
       </div>
 
-        <p className={css.footer_privacy_policy}>© 2025 Подорожники. Усі права захищені.</p>
+        <p className={css.footer_privacy_policy}>&copy; 2025 Подорожники. Усі права захищені.</p>
 
           
 
