@@ -2,13 +2,7 @@ import css from "./OurTravellers.module.css";
 import Container from "../Container/Container";
 import Section from "../Section/Section";
 import TravellersList from "../TravellersList/TravellersList";
-
-type Traveler = {
-  id: string;
-  name: string;
-  avatarUrl: string;
-  description: string;
-};
+import { Traveler } from "@/types/traveller";
 
 type OurTravellersProps = {
   travelers: Traveler[];

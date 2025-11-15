@@ -1,13 +1,7 @@
 import Link from "next/link";
 import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
 import css from "./TravellersList.module.css";
-
-type Traveler = {
-  id: string;
-  name: string;
-  description: string;
-  avatarUrl: string;
-};
+import { Traveler } from "@/types/traveller";
 
 type TravellersListProps = {
   travelers: Traveler[];
