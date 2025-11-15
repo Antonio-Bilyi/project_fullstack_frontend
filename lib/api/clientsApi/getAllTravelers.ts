@@ -1,28 +1,20 @@
-export type Traveler = {
-  id: string;
-  name: string;
-  description: string;
-  avatarUrl: string;
-};
+import { nextServer } from '@/lib/api/api';
+import type { User } from "@/types/user";
 
-export type UserFrom = {
-  _id: string;
-  name: string;
-  description?: string;
-  avatarUrl: string;
-};
 
-export async function getAllTravelers(): Promise<Traveler[]> {
- const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users?page=1&perPage=100`, {
-    credentials: 'include'
-  });
-  if (!res.ok) throw new Error(`Помилка запиту: ${res.status}`);
-  const json = await res.json();
-  const users: UserFrom[] = json.data?.data || []; 
-  return users.map(u => ({
-    id: u._id,
-    name: u.name,
-    description: u.description ?? "Мандрівник не залишив опис",
-    avatarUrl: u.avatarUrl,
-  }));
-}
+export const getAllTravelers = async (): Promise<User[]> => {
+  try {
+    
+    const response = await nextServer.get<{ data: User[] }>("/users", {
+      params: {
+        page: 1,
+        perPage: 100,
+      },
+    });
+
+    return response.data.data;
+  } catch (error) {
+    console.error("Error fetching travelers:", error);
+    return []; // Повертаємо порожній масив у разі помилки
+  }
+};
