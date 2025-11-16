@@ -3,6 +3,10 @@
 :root {
   --background: #f7f9ff;
   --foreground: #000;
+  --Color-RoyalBlue: rgba(65, 105, 225, 1);
+  --Radius-Small: 8px;
+  --ColorScheme2-Border: rgba(0, 0, 0, 0.15);
+  --Opacity-NeutralDarkest5: rgba(0, 0, 0, 0.05);
 }
 
 @media (prefers-color-scheme: dark) {
