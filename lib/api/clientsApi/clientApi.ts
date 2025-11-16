@@ -90,6 +90,21 @@ export const getCategories = async (): Promise<Category[]> => {
   return res.data.data;
 };
 
+export const getStories = async (params?: GetStoriesParams): Promise<PaginatedStoriesResponse> => {
+    const queryParams = new URLSearchParams();
+
+    if (params?.page) queryParams.append('page', params.page.toString());
+    if (params?.perPage) queryParams.append('perPage', params.perPage.toString());
+    if (params?.category) queryParams.append('category', params.category);
+
+    const formatedParams = queryParams.toString() ?? '';
+
+    const url = `/stories?${formatedParams}`;
+    const res = await nextServer.get<{ data: PaginatedStoriesResponse }>(url);
+
+    return res.data.data;
+};
+
 export const getStory = async (storyId: string): Promise<Story> => {
   const res = await nextServer.get<ApiResponse<Story>>(`/stories/${storyId}`);
 

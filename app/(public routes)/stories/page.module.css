@@ -1,0 +1,149 @@
+.page {
+    padding: 40px 0;
+}
+
+.header {
+    margin-bottom: 40px;
+}
+
+.title {
+    margin-bottom: 24px;
+}
+
+.filterSection {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.categoryButton {
+    padding: 8px 16px;
+    color: rgba(0, 0, 0, 1);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 150%;
+    letter-spacing: 0%;
+    text-align: left;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.categoryButton:hover {
+    opacity: 0.7;
+}
+
+.categoryButton.active {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 8px;
+    background: rgba(0, 0, 0, 0.05);
+    font-weight: 500;
+}
+
+.loadMoreWrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 48px;
+    padding: 24px 0;
+}
+
+.loadMoreButton {
+    border: 1px solid #4169e1;
+    border-radius: 8px;
+    padding: 6px 12px;
+    min-width: 200px;
+    height: 44px;
+    color: #ffff;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #4169e1;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.loadMoreButton:focus,
+.loadMoreButton:hover {
+    background-color: #e8eeff;
+    color: #000;
+}
+
+.loadMoreButton:active {
+    background-color: #7a96ea;
+    color: #000;
+}
+
+.loadMoreButton:disabled {
+    opacity: 0.3;
+    background-color: #4169e1;
+    color: #ffff;
+    cursor: not-allowed;
+}
+
+.loading {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #666;
+}
+
+.error {
+    text-align: center;
+    padding: 40px;
+    font-size: 18px;
+    color: #b00101;
+}
+
+.noStories {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px;
+    min-height: 300px;
+}
+
+.noStoriesText {
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 24px;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+    margin: 0;
+}
+
+@media (min-width: 768px) {
+    .page {
+        padding: 60px 0;
+    }
+
+    .categoryButton {
+        font-size: 18px;
+    }
+
+    .loadMoreButton {
+        font-size: 18px;
+        min-width: 250px;
+    }
+
+    .noStoriesText {
+        font-size: 28px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .page {
+        padding: 80px 0;
+    }
+
+    .categoryButton {
+        font-size: 18px;
+    }
+
+    .noStoriesText {
+        font-size: 32px;
+    }
+}
