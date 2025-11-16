@@ -1,13 +1,23 @@
 "use client";
 
-import { useRouter } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
+import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
+import * as StoryService from "@/lib/api/clientsApi/clientApi";
 import StoryForm from "@/components/StoryForm/StoryForm";
 import Modal from "@/components/Modal/Modal";
 
-export default function StoryCreatePage() {
+export default function EditStoryPage() {
+  const params = useParams();
   const router = useRouter();
+  const storyId = params.storyId as string;
   const [showCancelModal, setShowCancelModal] = useState(false);
+
+  const { data: story } = useQuery({
+    queryKey: ["story", storyId],
+    queryFn: () => StoryService.getStory(storyId),
+    enabled: !!storyId,
+  });
 
   const handleCancelClick = () => {
     setShowCancelModal(true);
@@ -21,7 +31,7 @@ export default function StoryCreatePage() {
   return (
     <>
       <section style={{ paddingTop: '48px', paddingBottom: '72px' }}>
-        <StoryForm mode="create" onCancel={handleCancelClick} />
+        <StoryForm story={story} mode="edit" onCancel={handleCancelClick} />
       </section>
       <Modal
         isOpen={showCancelModal}
