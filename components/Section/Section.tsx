@@ -8,14 +8,14 @@ interface SectionProps {
 }
 
 const Section = ({ children, classes = [] }: SectionProps) => {
-  const mainClass = css.section; //обов'язковий клас
+  const allClasses = [
+    css.section, // обов'язковий клас
+    ...classes.map((cl) => css[cl] ?? cl), // мапимо модульні класи
+  ].filter(Boolean);
 
-  const allClasses = classes
-    .map((cl) => css[cl] ?? cl) // тягнемо з модуля, якщо є
-    .join(" ");
+  const className = allClasses.join(" ");
 
-  const className = [mainClass, allClasses].join(" ").trim();
-
+  // console.log("SectionClassName: ", className);
   return <section className={className}> {children} </section>;
 };
 

@@ -7,8 +7,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #9c9c9c;
-    --foreground: #fff;
+    --background: #f7f9ff;
+    --foreground: #000;
   }
 }
 
@@ -29,19 +29,18 @@ body {
   background: var(--background);
 }
 
-h1,
-h2 {
+h1 {
   font-family: var(--font-family-sora), sans-serif;
   font-weight: 700;
   letter-spacing: -0.01em;
-}
-
-h1 {
   font-size: 32px;
 }
 
 h2 {
   font-size: 28px;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 /* базові скидання */
 h1,
@@ -88,6 +87,12 @@ button {
 
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
+  body {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
   h1 {
     font-size: 48px;
   }
@@ -95,26 +100,20 @@ button {
   h2 {
     font-size: 44px;
   }
-
-  body {
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 1.5;
-  }
 }
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1440px) {
+  body {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
   h1 {
     font-size: 56px;
   }
 
   h2 {
     font-size: 48px;
-  }
-
-  body {
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 1.5;
   }
 }

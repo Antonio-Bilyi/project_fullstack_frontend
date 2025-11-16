@@ -1,9 +1,7 @@
-// стилі
-import css from "./page.module.css";
 // компоненти
 import Hero from "@/components/Hero/Hero";
 import Popular from "@/components/Popular/Popular";
-import TravellersList from "@/components/TravellersList/TravellersList";
+// import TravellersList from "@/components/TravellersList/TravellersList";
 import About from "@/components/About/About";
 import Join from "@/components/Join/Join";
 
@@ -14,7 +12,7 @@ export default function Home() {
       <Hero />
       <About />
       <Popular />
-      <TravellersList />
+      {/* <TravellersList /> */}
       <Join />
     </>
     // </main>

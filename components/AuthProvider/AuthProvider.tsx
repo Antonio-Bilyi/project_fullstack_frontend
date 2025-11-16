@@ -2,6 +2,7 @@
 
 import { getUserProfile } from "@/lib/api/clientsApi/getUserProfile";
 import { useUserAuthStore } from "@/lib/store/authStore";
+import { logErrorResponse } from "@/app/api/_utils/utils";
 import { useEffect } from "react";
 
 interface AuthProviderProps {
@@ -14,10 +15,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
-      const user = await getUserProfile();
-      if (user) {
-        setAuth(user);
-      } else {
+      try {
+        const user = await getUserProfile();
+        if (user) {
+          setAuth(user);
+        } else {
+          clearIsAuth();
+        }
+      } catch (error) {
+        logErrorResponse(error);
         clearIsAuth();
       }
     };
