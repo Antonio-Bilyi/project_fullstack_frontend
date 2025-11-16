@@ -1,7 +1,9 @@
 'use client';
 
 import { handleApiError } from "../handleApiError";
-import { User } from '../../../types/user';
+import { User } from '@/types/user';
+import { Story } from '@/types/story';
+import { Category } from '@/types/category';
 import { nextServer } from '../api';
 
 export interface RegisterRequest {
@@ -13,6 +15,12 @@ export interface RegisterRequest {
 export interface LoginRequest {
   password: string;
   email: string;
+}
+
+interface ApiResponse<T> {
+  status?: number;
+  data?: T;
+  message?: string;
 }
 
 export const register = async (data: RegisterRequest): Promise<User> => {
@@ -37,4 +45,54 @@ export const logout = async (): Promise<void> => {
 export const checkSession = async (): Promise<boolean> => {
   const res = await nextServer.post<{ success: boolean }>('/auth/refresh');
   return res.data.success;
+};
+
+export const createStory = async (formData: FormData): Promise<Story> => {
+  const res = await nextServer.post<ApiResponse<Story>>('/stories', formData);
+
+  if (res.data.status && res.data.status >= 400) {
+    throw new Error(res.data.message || 'Failed to create story');
+  }
+
+  if (!res.data.data) {
+    throw new Error('No data returned from server');
+  }
+
+  return res.data.data;
+};
+
+export const updateStory = async (
+  storyId: string,
+  formData: FormData
+): Promise<Story> => {
+  const res = await nextServer.patch<ApiResponse<Story>>(`/stories/${storyId}`, formData);
+
+  if (res.data.status && res.data.status >= 400) {
+    throw new Error(res.data.message || 'Failed to update story');
+  }
+
+  if (!res.data.data) {
+    throw new Error('No data returned from server');
+  }
+
+  return res.data.data;
+};
+
+export const getCategories = async (): Promise<Category[]> => {
+  const res = await nextServer.get<{ data: Category[] }>('/categories');
+  return res.data.data;
+};
+
+export const getStory = async (storyId: string): Promise<Story> => {
+  const res = await nextServer.get<ApiResponse<Story>>(`/stories/${storyId}`);
+
+  if (res.data.status && res.data.status >= 400) {
+    throw new Error(res.data.message || 'Failed to fetch story');
+  }
+
+  if (!res.data.data) {
+    throw new Error('No data returned from server');
+  }
+
+  return res.data.data;
 };
