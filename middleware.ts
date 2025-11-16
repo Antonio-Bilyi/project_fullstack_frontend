@@ -14,7 +14,8 @@ export async function middleware(request: NextRequest) {
   const refreshToken = cookieStore.get('refreshToken')?.value;
 
   const isAuthRoute = authRoutes.some((route) => pathname.startsWith(route));
-  const isPrivateRoute = privateRoutes.some((route) => pathname.startsWith(route));
+  const isPrivateRoute = privateRoutes.some((route) => pathname.startsWith(route)) ||
+    pathname.match(/^\/stories\/[^/]+\/edit$/);
 
   if (!accessToken) {
     if (refreshToken) {
@@ -75,5 +76,11 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ['/profile', '/stories/create', '/auth/login', '/auth/register'],
+  matcher: [
+    '/profile',
+    '/stories/create',
+    '/stories/:storyId*/edit',
+    '/auth/login',
+    '/auth/register'
+  ],
 };
