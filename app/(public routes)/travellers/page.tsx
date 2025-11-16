@@ -1,5 +1,7 @@
 import TravellersClient from "./Travellers.client";
-import { getAllTravelers } from "@/lib/api/clientsApi/getAllTravelers";
+import { getAllTravelers } from "@/lib/api/serverApi/getAllTravelers";
+import { emptyTravelersList } from "@/types/user";
+
 
 export const metadata = {
   title: "Мандрівники",
@@ -8,10 +10,11 @@ export const metadata = {
 
 export default async function TravellersPage() {
   const travelers = await getAllTravelers();
+   const safeTravelers = travelers ?? emptyTravelersList; 
 console.log("Travelers:", travelers);
   return (
     <main>
-      <TravellersClient initialTravelers={travelers} />
+      <TravellersClient initialTravelers={safeTravelers} />
     </main>
   );
 }

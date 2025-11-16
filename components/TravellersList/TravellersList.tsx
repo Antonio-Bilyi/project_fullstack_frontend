@@ -1,4 +1,4 @@
-// import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
+import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
 import css from "./TravellersList.module.css";
 
 type Traveler = {
@@ -23,9 +23,9 @@ export default function TravellersList({
   return (
     <div className={css.wrapper}>
       <div className={css.cardsWrapper}>
-        {/* {displayedTravelers.map((traveler) => (
+        {displayedTravelers.map((traveler) => (
           <TravellerInfoCard key={traveler.id} {...traveler} />
-        ))} */}
+        ))}
       </div>
 
       {showPagination && (
