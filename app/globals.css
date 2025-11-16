@@ -1,26 +1,66 @@
 /* треба змінити згідно макету */
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f7f9ff;
+  --foreground: #000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #9c9c9c;
+    --foreground: #fff;
   }
 }
 
 html,
 body {
+  font-family: var(--font-family-nunito), sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
   max-width: 100vw;
+  min-height: 100vh;
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
+}
+
+h1 {
+  font-family: var(--font-family-sora), sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  font-size: 32px;
+}
+
+h2 {
+  font-size: 28px;
+  font-family: "Sora", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+/* базові скидання */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 * {
@@ -32,10 +72,48 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  cursor: pointer;
 }
 
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
+  }
+}
+
+/* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+  body {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  h2 {
+    font-size: 44px;
+  }
+}
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  body {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.5;
+  }
+
+  h1 {
+    font-size: 56px;
+  }
+
+  h2 {
+    font-size: 48px;
   }
 }

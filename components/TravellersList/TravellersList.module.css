@@ -1,0 +1,75 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+  width: 100%;
+}
+
+.cardsWrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  /* width: 100%; */
+}
+
+.cardsWrapper > * {
+  flex: 1 1 100%;
+  max-width: 335px;
+}
+
+.pagination {
+  display: none;
+}
+
+/* планшет */
+@media (min-width: 768px) {
+  .cardsWrapper > * {
+    flex: 1 1 calc(50% - 24px);
+    max-width: 340px;
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  .paginationBtn {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #4169e1;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+
+  .paginationBtn:hover,
+  .paginationBtn:focus {
+    border: 1px solid #4169e1;
+    background-color: #e8eeff;
+    color: #000;
+  }
+
+  .paginationBtn:active {
+    border: 1px solid #4169e1;
+    background-color: #7a96ea;
+    color: #000;
+  }
+}
+
+/* десктоп */
+@media (min-width: 1024px) {
+  .cardsWrapper > * {
+    flex: 1 1 calc(25% - 24px);
+    max-width: 310px;
+  }
+
+  .paginationBtn {
+    padding: 10px 12px;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
