@@ -1,13 +1,16 @@
+import { Category } from "./category";
+import { Owner } from "./owner";
+
+type OwnerType = string | Owner;
+type CategoryType = string | Category;
+
 export interface Story {
   _id: string;
   title: string;
-  category: {
-    _id: string;
-    name: string;
-  };
+  category: CategoryType;
   article: string;
   img: string;
-  ownerId: string;
+  ownerId: OwnerType;
   date: string;
   favoriteCount?: number;
   createdAt?: string;
