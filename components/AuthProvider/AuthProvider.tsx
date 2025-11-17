@@ -14,10 +14,14 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
-      const user = await getUserProfile();
-      if (user) {
-        setAuth(user);
-      } else {
+      try {
+        const user = await getUserProfile();
+        if (user) {
+          setAuth(user);
+        } else {
+          clearIsAuth();
+        }
+      } catch (error) {
         clearIsAuth();
       }
     };
