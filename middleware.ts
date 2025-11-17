@@ -4,7 +4,7 @@ import { parse } from 'cookie';
 import { checkServerSession } from './lib/api/serverApi/serverApi';
 import { logErrorResponse } from './app/api/_utils/utils';
 
-const privateRoutes = ['/profile', '/stories/create'];
+const privateRoutes = ['/profile', '/stories/create', '/edit'];
 const authRoutes = ['/auth/login', '/auth/register'];
 
 export async function middleware(request: NextRequest) {
@@ -80,6 +80,7 @@ export const config = {
     '/profile',
     '/stories/create',
     '/stories/:storyId*/edit',
+    '/edit',
     '/auth/login',
     '/auth/register'
   ],
