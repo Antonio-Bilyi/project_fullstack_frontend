@@ -1,0 +1,100 @@
+.wrapper {
+  padding: 40px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.title {
+  font-size: 42px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.infoItem {
+  font-size: 14px;
+  color: #444;
+}
+
+.label {
+  color: #6c6c6c;
+}
+
+.bold {
+  font-weight: 600;
+}
+
+.category {
+  margin-left: auto;
+  padding: 4px 12px;
+  background: #f0f1f7;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #555;
+}
+
+.contentLayout {
+  display: flex;
+  gap: 40px;
+}
+
+.leftSide {
+  flex: 1;
+}
+
+.mainImg {
+  width: 100%;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.article {
+  font-size: 16px;
+  line-height: 1.6;
+  white-space: pre-line;
+}
+
+.sidebar {
+  width: 280px;
+  background: #f6f7fb;
+  padding: 24px;
+  border-radius: 16px;
+  height: max-content;
+  position: sticky;
+  top: 120px;
+}
+
+.saveTitle {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.saveText {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.saveBtn {
+  width: 100%;
+  background: #3b6ef5;
+  color: #fff;
+  padding: 12px 0;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.saveBtn:hover {
+  background: #2f5bdd;
+}
