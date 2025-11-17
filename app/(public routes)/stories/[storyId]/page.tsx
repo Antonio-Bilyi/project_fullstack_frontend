@@ -3,10 +3,10 @@
 import { useState, useEffect } from "react";
 import StoryDetails from "@/components/StoryDetails/StoryDetails";
 
+
 interface StoryPageProps {
   params: Promise<{ storyId: string }>;
 }
-
 const StoryPage = ({ params }: StoryPageProps) => {
   const [storyId, setStoryId] = useState<string>(""); 
   const [storyData, setStoryData] = useState<null | {

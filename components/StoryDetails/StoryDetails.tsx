@@ -1,8 +1,9 @@
 "use client";
 
+
 interface StoryDetailsProps {
-  storyId: string; 
-  data: { 
+  storyId: string;
+  data: {
     title: string;
     article: string;
     img: string;
