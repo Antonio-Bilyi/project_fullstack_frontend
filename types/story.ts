@@ -1,36 +1,18 @@
-// export interface Story {
-//   _id: string;
-//   title: string;
-//   category: {
-//     _id: string;
-//     name: string;
-//   };
-//   article: string;
-//   img: string;
-//   ownerId: string;
-//   date: string;
-//   favoriteCount?: number;
-//   createdAt?: string;
-//   updatedAt?: string;
-// }
+import { Category } from "./category";
+import { Owner } from "./owner";
 
-// розширені дані історії даними категорії та власника
-export interface StoryExp {
+type OwnerType = string | Owner;
+type CategoryType = string | Category;
+
+export interface Story {
   _id: string;
   title: string;
-  category: {
-    _id: string;
-    name: string;
-  };
+  category: CategoryType;
   article: string;
   img: string;
-  ownerId: {
-    _id: string;
-    name: string;
-    avatarUrl: string;
-  };
+  ownerId: OwnerType;
   date: string;
-  favoriteCount: number;
+  favoriteCount?: number;
   createdAt?: string;
   updatedAt?: string;
 }
