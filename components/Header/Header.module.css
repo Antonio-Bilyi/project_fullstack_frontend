@@ -1,75 +1,28 @@
-.container {
+body {
+  scroll-padding-top: 64px;
+}
+
+.homeContainer {
   min-width: 320px;
-  max-width: 375px;
   margin: 0 auto;
-  padding: 0 16px;
-}
-/* Styles for Tablet devices */
-@media only screen and (min-width: 768px) {
-  .container {
-    max-width: 768px;
-    padding: 0 32px;
-  }
-}
-/* Styles for Desktop devices */
-@media only screen and (min-width: 1440px) {
-  .container {
-    max-width: 1440px;
-    padding: 0 64px;
-  }
+  padding: 16px 20px;
+
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10;
 }
 
 .header_container {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-}
-
-.nav_desktop {
-  display: none;
-}
-
-/* Бургер-кнопка */
-.burger_btn {
-  border: none;
-  background: none;
-  cursor: pointer;
-}
-
-.btn_background {
-  border-radius: 8px;
-  padding: 4px;
-  width: 32px;
-  height: 32px;
-  background: rgba(0, 0, 0, 0.05);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.burger_icon {
-  fill: #000; /* Меняем цвет на чёрный, чтобы было видно на светлом фоне */
-}
-
-/* Кнопка публикации истории */
-.create_story_btn {
-  display: none; /* скрыта по умолчанию для мобильных */
-}
-
-/* Навигация для планшета */
-.nav_tablet {
-  display: flex;
-  gap: 12px;
   align-items: center;
 }
 
-/* Логотип */
-.logo_container {
-  width: 156px;
-  height: 36px;
-  padding: 7px 4px;
-}
-.logo svg {
+.logo {
   display: flex;
   flex-wrap: nowrap;
   justify-content: center;
@@ -77,56 +30,31 @@
   gap: 3px;
 }
 
-/* === Планшет (768px - 1023px) === */
-@media screen and (min-width: 768px) {
-  .create_story_btn {
-    display: inline-block;
-    border: 1px solid #000;
-    border-radius: 8px;
-    padding: 4px 10px;
-    background-color: #fff;
-    color: #000;
-    text-decoration: none;
-    font-weight: 500;
-  }
+.homeLogoText {
+  font-family: var(--second-family);
+  font-size: 17px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
 
-  .nav_tablet {
-    gap: 16px;
+.defaultLogoText {
+  font-family: var(--second-family);
+  font-size: 17px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #000;
+}
+
+@media only screen and (min-width: 768px) {
+  .homeContainer {
+    padding: 16px 32px;
   }
 }
 
-/* === Десктоп (1024px+) === */
-@media screen and (min-width: 1024px) {
-  .nav_tablet {
-    display: none; /* на десктопе используем nav_desktop */
-  }
-
-  .nav_desktop {
-    display: flex;
-    gap: 24px;
-    align-items: center;
-  }
-
-  .create_story_btn {
-    display: inline-block; /* кнопка теперь видна для авторизованных */
-  }
-
-  .logout_btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-  }
-
-  .profile {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-
-  .profile img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+@media only screen and (min-width: 1440px) {
+  .homeContainer {
+    max-width: 1440px;
+    padding: 16px 64px;
   }
 }
