@@ -96,4 +96,3 @@ export const getStory = async (storyId: string): Promise<Story> => {
 
   return res.data.data;
 };
-
