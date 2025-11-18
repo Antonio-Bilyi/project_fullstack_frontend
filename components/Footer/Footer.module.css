@@ -38,6 +38,14 @@
     justify-content: center
 }
 
+.footer_socialmedia_icon {
+    transition: transform 0.25s ease;
+}
+
+.footer_socialmedia_icon:hover {
+    transform: scale(1.15);
+}
+
 .footer_privacy_policy {
     /* font-weight: 400; */
     font-size: 12px;

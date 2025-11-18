@@ -6,6 +6,7 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       { protocol: "https", hostname: "res.cloudinary.com" },
       { protocol: "https", hostname: "ftp.goit.study" },
+      { protocol: "https", hostname: "cdn.pixabay.com" },
     ],
   },
 };

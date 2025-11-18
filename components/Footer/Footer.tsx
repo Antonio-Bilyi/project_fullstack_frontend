@@ -12,7 +12,7 @@ export default function Footer() {
     <Container>
       <div className={css.footer_box}>
         <div className={css.footer_content}>
-          <Link href='/' aria-label="Home" target="blank" className={css.footer_logo}>
+          <Link href='/' aria-label="Home" className={css.footer_logo}>
             <svg width={20} height={22} className={css.footer_logo_item}>
               <use href="/svg-sprite.svg#icon-logo"></use>
             </svg>
@@ -56,7 +56,7 @@ export default function Footer() {
           <AuthNavigation />
       </div>
 
-        <p className={css.footer_privacy_policy}>© 2025 Подорожники. Усі права захищені.</p>
+        <p className={css.footer_privacy_policy}>&copy; 2025 Подорожники. Усі права захищені.</p>
 
           
 

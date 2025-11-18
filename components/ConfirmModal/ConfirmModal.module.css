@@ -1,0 +1,228 @@
+:where(.modalOverlay, .modalContent) {
+  /* Основні кольори та параметри модалки (локально для модалки) */
+  --modal-bg: #F7F9FF;                       /* фон модалки */
+  --modal-text: black;                       /* текст модалки */
+  --modal-overlay-bg: rgba(0, 0, 0, 0.25);   /* фон оверлею */
+  --modal-border: rgba(0, 0, 0, 0.15);       /* рамка модалки */
+  --modal-btn-bg: rgba(0, 0, 0, 0.05);       /* фон кнопок */
+  --modal-btn-hover-bg: rgba(0, 0, 0, 0.1);  /* фон кнопок при hover */
+  --modal-primary-bg: #4169E1;               /* фон основної кнопки */
+  --modal-primary-hover-bg: #3151c9;         /* hover основної кнопки */
+  --modal-radius: 24px;                      /* скруглення модалки */
+  --modal-transition: all 0.4s cubic-bezier(0.25,1,0.5,1); /* плавна анімація */
+}
+
+/* @media (prefers-color-scheme: dark) {
+:where(.modalOverlay, .modalContent) {
+  --modal-bg: #2a2a2a;
+  --modal-text: #fff;
+  --modal-border: rgba(255, 255, 255, 0.2);
+  --modal-btn-bg: rgba(255, 255, 255, 0.1);
+  --modal-btn-hover-bg: rgba(255, 255, 255, 0.15);
+}
+} */
+
+/* ===============================
+   Overlay (фон модалки)
+================================= */
+.modalOverlay {
+  position: fixed;         
+  inset: 0;                
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: var(--modal-overlay-bg);
+  opacity: 0;              
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+}
+
+.modalOverlayVisible {
+  opacity: 1;
+  pointer-events: auto;    
+}
+
+/* ===============================
+   Модальне вікно
+================================= */
+.modalContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: var(--modal-bg);
+  color: var(--modal-text);
+  border-radius: var(--modal-radius);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+  padding: 64px 20px 20px;
+  width: 100%;
+  max-width: 768px;
+
+  /* Анімація появи */
+  opacity: 0;
+  transform: scale(0.9) translateY(40px) rotateX(-5deg);
+  transition: var(--modal-transition);
+}
+
+.modalContentVisible {
+  opacity: 1;
+  transform: scale(1) translateY(0) rotateX(0deg);
+}
+
+/* ===============================
+   Header (текст модалки)
+================================= */
+.modalHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+}
+
+.modalTitle {
+  font-family: var(--font-family-sora);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--modal-text);
+}
+
+.modalDescription {
+  font-family: var(--font-family-nunito);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--modal-text);
+  max-width: 520px;
+}
+
+/* ===============================
+   Кнопки
+================================= */
+.modalButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  margin-top: 32px;
+}
+
+.modalButton {
+  height: 48px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  outline: 1px solid var(--modal-border);
+  border: none;
+  background-color: var(--modal-btn-bg);
+  color: var(--modal-text);
+  font-family: var(--font-family-nunito);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 27px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--modal-transition);
+}
+
+.modalButton:hover {
+  background-color: var(--modal-btn-hover-bg);
+  transform: translateY(-1px);
+}
+
+.modalButtonPrimary {
+  background-color: var(--modal-primary-bg);
+  outline-color: var(--modal-primary-bg);
+  color: white;
+}
+
+.modalButtonPrimary:hover {
+  background-color: var(--modal-primary-hover-bg);
+  outline-color: var(--modal-primary-hover-bg);
+}
+
+/* ===============================
+   Кнопка закриття
+================================= */
+.closeButton {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--modal-transition);
+}
+
+.closeButton:hover {
+  background-color: var(--modal-btn-hover-bg);
+}
+
+/* Іконка "хрестик" */
+.closeIcon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+
+.closeIcon::before,
+.closeIcon::after {
+  content: '';
+  position: absolute;
+  width: 14px;
+  height: 2px;
+  background-color: var(--modal-text);
+  top: 50%;
+  left: 50%;
+  transform-origin: center;
+}
+
+.closeIcon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.closeIcon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+/* ===============================
+   Адаптивність
+================================= */
+@media (min-width: 768px) {
+  .modalContent {
+    padding: 64px;
+    max-width: 768px;
+  }
+
+  .modalTitle {
+    font-size: 48px;
+    line-height: 57.6px;
+  }
+
+  .modalDescription {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+  .modalButtons {
+    flex-direction: row;
+    justify-content: center;
+    width: 430px;
+    gap: 24px;
+  }
+
+  .modalButton {
+    flex: 1;
+  }
+}
