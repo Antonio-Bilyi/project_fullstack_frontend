@@ -3,7 +3,6 @@ import css from "./page.module.css";
 // компоненти
 import Hero from "@/components/Hero/Hero";
 import About from "@/components/About/About";
-import Popular from "@/components/Popular/Popular";
 import OurTravellers from "@/components/OurTravellers/OurTravellers";
 import Join from "@/components/Join/Join";
 
@@ -411,7 +410,6 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <Popular />
       <OurTravellers
         travelers={travelers.map((t) => ({
           id: t._id.$oid,
