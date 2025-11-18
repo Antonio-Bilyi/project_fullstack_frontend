@@ -2,7 +2,8 @@ body {
   scroll-padding-top: 64px;
 }
 
-.homeContainer {
+.homeContainer,
+.defaultContainer {
   /* min-width: 320px; */
   /* margin: 0 auto; */
   padding-top: 16px;
