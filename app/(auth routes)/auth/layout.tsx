@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter, usePathname } from 'next/navigation';
 import { checkSession } from '@/lib/api/clientsApi/clientApi';
 import { useUserAuthStore } from '@/lib/store/authStore';
+import TravelLoader from '@/components/TravelLoader/TravelLoader';
 
 type Props = {
   children: React.ReactNode;
@@ -41,9 +42,7 @@ export default function PublicLayout({ children }: Props) {
 
   if (loading) {
     return (
-      <div className="flex justify-center items-center min-h-screen text-xl font-medium">
-        Loading...
-      </div>
+      <TravelLoader />
     );
   }
 

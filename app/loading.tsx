@@ -1,4 +1,10 @@
+import TravelLoader from "../components/TravelLoader/TravelLoader";
+
 export default function Loading() {
-  return <p>Loading, please wait...</p>;
+  return <TravelLoader />;
 }
-// Бажано сюди знайти прикольний лоудер
+
+
+
+
+

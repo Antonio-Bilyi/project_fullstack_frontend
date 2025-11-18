@@ -1,0 +1,53 @@
+.planeloader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: linear-gradient(to bottom, #87ceeb, #fff);
+  font-family: system-ui, sans-serif;
+}
+
+.plane {
+  font-size: 2.5rem;
+  animation: fly 2s ease-in-out infinite, bounce 2s ease-in-out infinite;
+}
+
+.trail {
+  width: 60px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 1px;
+  margin-top: -8px;
+  animation: trail 2s linear infinite;
+}
+
+.planetext {
+  text-align: center;
+  margin-top: 16px;
+  opacity: 0.9;
+  animation: pulseText 1.5s infinite;
+}
+
+@keyframes fly {
+  0% { transform: translateX(-50px); opacity: 0.6; }
+  50% { transform: translateX(50px); opacity: 1; }
+  100% { transform: translateX(-50px); opacity: 0.6; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  25% { transform: translateY(-8px); }
+  75% { transform: translateY(-4px); }
+}
+
+@keyframes trail {
+  0% { width: 0; opacity: 0; }
+  50% { width: 60px; opacity: 1; }
+  100% { width: 0; opacity: 0; }
+}
+
+@keyframes pulseText {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.05); }
+}
