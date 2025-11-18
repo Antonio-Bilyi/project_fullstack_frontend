@@ -26,7 +26,7 @@ export default function Profile() {
 
         setUser(userData);
 
-        const res = await fetch(`/users/Me?storiesType=${activeTab}`, {
+        const res = await fetch(`/users/me/${userData.id}?storiesType=${activeTab}`, {
           credentials: "include",
         });
 
@@ -79,14 +79,14 @@ export default function Profile() {
 
       <div className={styles.tabs}>
         <button
-          className={`${styles.tabButton} ${activeTab === "own" ? styles.active : ""}`}
-          onClick={() => setActiveTab("own")}
+          className={`${styles.tabButton} ${activeTab === "saved" ? styles.active : ""}`}
+          onClick={() => setActiveTab("saved")}
         >
           Збережені історії
         </button>
         <button
-          className={`${styles.tabButton} ${activeTab === "saved" ? styles.active : ""}`}
-          onClick={() => setActiveTab("saved")}
+          className={`${styles.tabButton} ${activeTab === "own" ? styles.active : ""}`}
+          onClick={() => setActiveTab("own")}
         >
           Мої історії
         </button>
