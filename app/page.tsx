@@ -1,7 +1,7 @@
 // компоненти
 import Hero from "@/components/Hero/Hero";
 import Popular from "@/components/Popular/Popular";
-// import TravellersList from "@/components/TravellersList/TravellersList";
+// import OurTravellers from "@/components/OurTravellers/OurTravellers";
 import About from "@/components/About/About";
 import Join from "@/components/Join/Join";
 import Header from "@/components/Header/Header";
@@ -14,7 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <Popular />
-      {/* <TravellersList /> */}
+      {/* <OurTravellers /> */}
       <Join />
     </>
     // </main>
