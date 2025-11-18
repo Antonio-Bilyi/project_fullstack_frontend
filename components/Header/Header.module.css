@@ -17,6 +17,23 @@ body {
   z-index: 10;
 }
 
+.homeContainer.scrolled {
+  background-color: rgba(10, 12, 20, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.defaultContainer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10;
+}
+
 .header_container {
   width: 100%;
   display: flex;
