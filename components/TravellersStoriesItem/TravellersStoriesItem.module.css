@@ -54,7 +54,24 @@
   object-fit: cover;
 }
 
-.userName {
+.userNameWrapper {
   font-size: 12px;
   font-weight: 600;
+}
+
+.favWrapper {
+  display: flex;
+  gap: 25px;
+}
+
+.userName {
+}
+
+.storyDate {
+}
+
+.storyFavCnt {
+}
+
+.storySaveSvg {
 }

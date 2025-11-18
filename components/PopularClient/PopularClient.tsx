@@ -40,7 +40,7 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
     // , isLoading, isError, isSuccess
   } = useQuery({
     queryKey: ["stories", page, perPage],
-    queryFn: () => getAllStories(page, perPage, "all", "favoriteCount", "desc"),
+    queryFn: () => getAllStories(page, perPage, "all", "desc", "favoriteCount"),
     refetchOnMount: false,
   });
 

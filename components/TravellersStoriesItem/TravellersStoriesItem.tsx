@@ -28,7 +28,7 @@ export default function TravellersStoriesItem({
   return (
     <>
       <Image
-        src={"/avatar/defaultAvatar.webp"}
+        src={story.img}
         alt={story.title}
         width={335}
         height={223}
@@ -56,13 +56,14 @@ export default function TravellersStoriesItem({
           />
           <div className={css.userNameWrapper}>
             <p className={css.userName}>{ownerName}</p>
-            <p className={css.storyDate}>{dateStory}</p>
-            <p className={css.storyFavCnt}>
-              {story.favoriteCount}{" "}
-              <svg className={css.storySaveSvg} width="16" height="16">
-                <use href="/svg-sprite.svg#icon-bookmark"></use>
-              </svg>
-            </p>
+            <div className={css.favWrapper}>
+              <p className={css.storyDate}>{dateStory}</p>
+              <p className={css.storyFavCnt}>
+                <svg className={css.storySaveSvg} width="16" height="16">
+                  <use href="/svg-sprite.svg#icon-bookmark"></use>
+                </svg>
+              </p>
+            </div>
           </div>
         </div>
         <div className={css.buttonsSection}>
