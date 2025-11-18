@@ -1,36 +1,35 @@
+import Link from "next/link";
 import TravellerInfoCard from "../TravellerInfoCard/TravellerInfoCard";
 import css from "./TravellersList.module.css";
-
-type Traveler = {
-  id: string;
-  name: string;
-  description: string;
-  avatarUrl: string;
-};
+import { Traveler } from "@/types/traveller";
 
 type TravellersListProps = {
   travelers: Traveler[];
   limit?: number;
-  showPagination?: boolean;
+  showViewAllButton?: boolean;
 };
 
 export default function TravellersList({
   travelers,
   limit,
-  showPagination,
+  showViewAllButton,
 }: TravellersListProps) {
   const displayedTravelers = limit ? travelers.slice(0, limit) : travelers;
   return (
     <div className={css.wrapper}>
-      <div className={css.cardsWrapper}>
+      <ul className={css.cardsWrapper}>
         {displayedTravelers.map((traveler) => (
-          <TravellerInfoCard key={traveler.id} {...traveler} />
+          <li key={traveler.id} className={css.cardItem}>
+            <TravellerInfoCard {...traveler} />
+          </li>
         ))}
-      </div>
+      </ul>
 
-      {showPagination && (
-        <div className={css.pagination}>
-          <button className={css.paginationBtn}>Переглянути всіх</button>
+      {showViewAllButton && (
+        <div className={css.buttonWrapper}>
+          <button className={css.viewAllButton}>
+            <Link href="/travellers">Переглянути всіх</Link>
+          </button>
         </div>
       )}
     </div>

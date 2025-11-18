@@ -7,7 +7,8 @@
   padding: 24px;
   width: 100%;
   min-width: 250px;
-  max-width: 335px;
+  max-width: 320px;
+
   gap: 24px;
   transition:
     transform 0.2s ease,
@@ -36,8 +37,7 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 287px;
-  height: 179px;
+  width: 100%;
 }
 
 .name {
@@ -57,6 +57,7 @@
   -webkit-line-clamp: 3;
   overflow: hidden;
   text-overflow: ellipsis;
+  /* width: fit-content; */
 }
 
 .profileButton {
@@ -67,15 +68,15 @@
   color: #000;
   font-size: 16px;
   font-weight: 500;
-  padding: 12px 60px;
+  padding: 12px 24px;
   border-radius: 8px;
   text-decoration: none;
   white-space: nowrap;
   max-width: 100%;
   box-sizing: border-box;
   transition:
-    background-color 0.2s ease,
-    border-color 0.2s ease;
+    background-color 0.3s ease,
+    border-color 0.3s ease;
 }
 
 .profileButton:hover {
@@ -83,15 +84,22 @@
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+.profileButton:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
 /* планшет*/
 @media (min-width: 768px) {
   .card {
+    width: 100%;
     max-width: 340px;
   }
 
   .content {
-    width: 292px;
-    height: 179px;
+    width: 100%;
+    max-width: 292px;
   }
 
   .profileButton {
@@ -100,14 +108,15 @@
 }
 
 /*десктоп*/
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .card {
+    width: 100%;
     max-width: 310px;
   }
 
   .content {
-    width: 262px;
-    height: 200px;
+    width: 100%;
+    max-width: 262px;
   }
 
   .name {
