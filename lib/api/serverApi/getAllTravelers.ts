@@ -9,8 +9,7 @@ export const getAllTravelers = async (): Promise<TravelersList| null> => {
     const response = await nextServer.get<TravelersResponse>("/users", {
       params: {
         page: 1,
-        }, headers: { Cookie: cookiesCurrent.toString(), },
-        
+        }, 
     });
 
     return response.data.data;
