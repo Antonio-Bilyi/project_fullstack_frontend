@@ -16,3 +16,13 @@ export interface Story {
   createdAt?: string;
   updatedAt?: string;
 }
+
+export interface StoriesHttpResponse {
+    data: Story[];
+    page: number;
+    perPage: number;
+    totalItems: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+}

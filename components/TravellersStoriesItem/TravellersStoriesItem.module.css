@@ -1,0 +1,60 @@
+.storyImg {
+  width: 100%;
+  height: 223px;
+  object-fit: cover;
+}
+
+.contentCard {
+  padding: 24px;
+  width: 100%;
+}
+
+.category {
+  font-weight: 600;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.storyTittle {
+  font-size: 18px;
+  font-family: var(--font-family-nunito);
+  font-weight: 700;
+  line-height: 1.5;
+  margin-bottom: 8px;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.storyArticle {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 24px;
+}
+
+/* .storyInfoWrapper {
+  margin-bottom: 24px;
+} */
+
+.userInfo {
+  display: flex;
+  flex-direction: raw;
+  gap: 16px;
+}
+
+.userImg {
+  width: 48px;
+  height: 48px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.userName {
+  font-size: 12px;
+  font-weight: 600;
+}

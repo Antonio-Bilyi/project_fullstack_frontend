@@ -1,0 +1,14 @@
+.storiesList {
+  display: flex;
+  flex-direction: raw;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.StoryItem {
+  width: 100%;
+  border: 0px solid var(--color-scheme-1-border);
+  border-radius: 16px;
+  background: var(--color-scheme-2-foreground);
+  overflow: hidden;
+}
