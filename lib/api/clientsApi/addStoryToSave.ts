@@ -3,11 +3,11 @@ import { ApiResponse } from "@/types/api";
 
 import { nextServer } from "@/lib/api/api";
 
-// отримати список всіх історій
-export const addStoryToSave = async (userId:string, storyId: string): Promise<ApiResponse<StoryFavHttpResponse>> => {
-    const endPoint = '/users/${userId}';
+// Додати історію в збережені 
+export const addStoryToSave = async (storyId: string): Promise<ApiResponse<StoryFavHttpResponse>> => {
+    const endPoint = `/users/addStoryToDownloads`;
 
-    const response = await nextServer.get<ApiResponse<StoryFavHttpResponse>>(endPoint, { params},);
+    const response = await nextServer.post<ApiResponse<StoryFavHttpResponse>>(endPoint, storyId);
 
     return response.data;
 }
