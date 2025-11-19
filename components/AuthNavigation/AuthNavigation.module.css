@@ -188,10 +188,23 @@
   color: #000;
 }
 
+.authUserHome .userName {
+  color: #fff;
+}
+
 .logoutBtn {
   border: none;
   background: none;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.logOutIcon {
+  fill: #000;
+  transition: fill 0.2s ease;
+}
+
+.authUserHome .logOutIcon {
+  fill: #fff;
 }
