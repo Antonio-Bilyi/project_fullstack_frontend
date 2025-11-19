@@ -40,29 +40,19 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
     return () => window.removeEventListener("resize", updatePerPage);
   }, []);
 
-  const {
-    data,
-    hasNextPage,
-    isFetchingNextPage,
-    fetchNextPage,
-  } = useInfiniteQuery({
-    queryKey: [
-      "stories",
-      perPage,
-      "ALL",
-      "desc",
-      "favoriteCount",
-    ] as const,
-    queryFn: ({ pageParam }: { pageParam: number }) =>
-      getAllStories(pageParam, perPage, "ALL", "desc", "favoriteCount"),
-    initialPageParam: 1,
-    getNextPageParam: (lastPage: ApiResponse<StoriesHttpResponse>) => {
-      if (lastPage.data?.hasNextPage) {
-        return lastPage.data.page + 1;
-      }
-      return undefined;
-    },
-  });
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useInfiniteQuery({
+      queryKey: ["stories", perPage, "ALL", "desc", "favoriteCount"] as const,
+      queryFn: ({ pageParam }: { pageParam: number }) =>
+        getAllStories(pageParam, perPage, "ALL", "desc", "favoriteCount"),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage: ApiResponse<StoriesHttpResponse>) => {
+        if (lastPage.data?.hasNextPage) {
+          return lastPage.data.page + 1;
+        }
+        return undefined;
+      },
+    });
 
   function handleLoadMore() {
     if (hasNextPage && !isFetchingNextPage) {
@@ -81,12 +71,12 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
 
           {isFetchingNextPage ? (
             <Pagination
-              name={"Завантажується..."}
+              name={"Вже скоро..."}
               onClick={handleLoadMore}
             ></Pagination>
           ) : hasNextPage ? (
             <Pagination
-              name={"Переглянути ще"}
+              name={"Показати ще"}
               onClick={handleLoadMore}
             ></Pagination>
           ) : null}
