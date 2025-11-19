@@ -32,8 +32,17 @@ export default function HeaderRight({ isHome = false }) {
 
       {/* Always visible on mobile + tablet */}
       <div className={css.mobileMenuBtn}>
-        <button className={css.burgerBtn} onClick={() => setIsMenuOpen(true)}>
-          <svg width={24} height={24} className={css.burgerIcon}>
+        <button
+          className={`${css.burgerBtn} ${
+            isHome ? css.burgerBtnHome : css.burgerBtnDefault
+          }`}
+          onClick={() => setIsMenuOpen(true)}
+        >
+          <svg
+            width={24}
+            height={24}
+            className={`${isHome ? css.burgerIconHome : css.burgerIconDefault}`}
+          >
             <use href="/svg-sprite.svg#icon-burger-menu"></use>
           </svg>
         </button>
