@@ -2,13 +2,13 @@
 
 import React from "react";
 import type { StoriesHttpResponse } from "@/types/story";
+import type { TravelerStoriesHttpResponse } from "@/types/traveller";
 import type { ApiResponse } from "@/types/api";
-// стилі
 import css from "./TravellersStories.module.css";
 import TravellersStoriesItem from "../TravellersStoriesItem/TravellersStoriesItem";
 
 interface TravellersStoriesProps {
-  pages?: ApiResponse<StoriesHttpResponse>[];
+  pages?: ApiResponse<StoriesHttpResponse | TravelerStoriesHttpResponse>[];
 }
 
 export default function TravellersStories({ pages }: TravellersStoriesProps) {
@@ -21,12 +21,14 @@ export default function TravellersStories({ pages }: TravellersStoriesProps) {
       <ul className={css.storiesList}>
         {pages.map((group, i) => (
           <React.Fragment key={i}>
-            {group.data?.data?.map((story) => (
-              <TravellersStoriesItem
-                story={story}
-                key={story._id}
-              ></TravellersStoriesItem>
-            ))}
+            {group.data?.data && "stories" in group.data.data
+              ? group.data.data.stories.map((story) => (
+                  <TravellersStoriesItem story={story} key={story._id} />
+                ))
+              : Array.isArray(group.data?.data) &&
+                group.data.data.map((story) => (
+                  <TravellersStoriesItem story={story} key={story._id} />
+                ))}
           </React.Fragment>
         ))}
       </ul>

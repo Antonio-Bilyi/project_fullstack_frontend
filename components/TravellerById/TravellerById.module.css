@@ -1,0 +1,21 @@
+.title {
+  margin-bottom: 24px;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+@media (min-width: 768px) {
+  .title {
+    margin-bottom: 32px;
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .title {
+    margin-bottom: 40px;
+    font-size: 36px;
+  }
+}
+
