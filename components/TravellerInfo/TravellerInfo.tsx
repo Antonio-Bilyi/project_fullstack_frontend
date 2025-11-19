@@ -1,28 +1,34 @@
 import { Traveler } from "@/types/traveller";
+import { User } from "@/types/user";
 import Image from "next/image";
 import css from "./TravellerInfo.module.css";
 
 interface TravellerInfoProps {
-  traveller: Traveler;
+  traveller?: Traveler;
+  user?: User;
 }
 
-export default function TravellerInfo({ traveller }: TravellerInfoProps) {
+export default function TravellerInfo({ traveller, user }: TravellerInfoProps) {
+  const data = traveller || user;
+
+  if (!data) {
+    return null;
+  }
+
   return (
     <div className={css.wrapper}>
       <div className={css.imageWrapper}>
         <Image
-          src={traveller.avatarUrl || "/avatar/defaultAvatar.webp"}
-          alt={traveller.name}
+          src={data.avatarUrl || "/avatar/defaultAvatar.webp"}
+          alt={data.name}
           width={120}
           height={120}
           className={css.avatar}
         />
       </div>
       <div className={css.info}>
-        <h1 className={css.name}>{traveller.name}</h1>
-        {traveller.description && (
-          <p className={css.description}>{traveller.description}</p>
-        )}
+        <h1 className={css.name}>{data.name}</h1>
+        {data.description && <p className={css.description}>{data.description}</p>}
       </div>
     </div>
   );
