@@ -1,23 +1,33 @@
 "use client";
 
-import type { Story } from "@/types/story";
+import React from "react";
+import type { StoriesHttpResponse } from "@/types/story";
+import type { ApiResponse } from "@/types/api";
 // стилі
 import css from "./TravellersStories.module.css";
 import TravellersStoriesItem from "../TravellersStoriesItem/TravellersStoriesItem";
 
 interface TravellersStoriesProps {
-  stories: Story[];
+  pages?: ApiResponse<StoriesHttpResponse>[];
 }
 
-export default function TravellersStories({ stories }: TravellersStoriesProps) {
+export default function TravellersStories({ pages }: TravellersStoriesProps) {
+  if (!pages || pages.length === 0) {
+    return null;
+  }
+
   return (
     <>
       <ul className={css.storiesList}>
-        {stories.map((story) => (
-          <TravellersStoriesItem
-            story={story}
-            key={story._id}
-          ></TravellersStoriesItem>
+        {pages.map((group, i) => (
+          <React.Fragment key={i}>
+            {group.data?.data?.map((story) => (
+              <TravellersStoriesItem
+                story={story}
+                key={story._id}
+              ></TravellersStoriesItem>
+            ))}
+          </React.Fragment>
         ))}
       </ul>
     </>

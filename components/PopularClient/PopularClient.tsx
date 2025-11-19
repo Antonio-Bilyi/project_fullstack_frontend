@@ -6,7 +6,7 @@ import {
   //   keepPreviousData,
   DehydratedState,
 } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAllStories } from "@/lib/api/clientsApi/getAllStories";
 import Section from "../Section/Section";
 import Container from "../Container/Container";
@@ -15,13 +15,13 @@ import css from "./PopularClient.module.css";
 import { ApiResponse } from "@/types/api";
 import { StoriesHttpResponse } from "@/types/story";
 import Pagination from "../Pagination/Pagination";
+import TravellersStories from "@/components/TravellersStories/TravellersStories";
 
 interface PopularClientProps {
   dehydratedState: DehydratedState;
 }
 
 export default function PopularClient({ dehydratedState }: PopularClientProps) {
-  const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(3);
 
   useEffect(() => {
@@ -40,25 +40,14 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
     return () => window.removeEventListener("resize", updatePerPage);
   }, []);
 
-  function handleLoadMore() {
-    if (hasNextPage && !isFetchingNextPage) {
-      setPage((prev) => prev + 1);
-    }
-  }
-
   const {
     data,
     hasNextPage,
     isFetchingNextPage,
-    isFetching,
     fetchNextPage,
-    isLoading,
-    error,
-    // isSuccess,
   } = useInfiniteQuery({
     queryKey: [
       "stories",
-      page,
       perPage,
       "ALL",
       "desc",
@@ -66,28 +55,20 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
     ] as const,
     queryFn: ({ pageParam }: { pageParam: number }) =>
       getAllStories(pageParam, perPage, "ALL", "desc", "favoriteCount"),
-    initialPageParam: page, // Используем page из useState
+    initialPageParam: 1,
     getNextPageParam: (lastPage: ApiResponse<StoriesHttpResponse>) => {
-      // Если есть данные и есть еще страницы
       if (lastPage.data?.hasNextPage) {
         return lastPage.data.page + 1;
       }
       return undefined;
     },
-    //   useInfinityQuery({
-    // queryKey: ["stories", page, perPage],
-    // queryFn: ({ pageParam }: { pageParam: number }) =>
-    //   getAllStories(pageParam, perPage, "ALL", "desc", "favoriteCount"),
-    // initialPageParam: page,
-    //   getNextPageParam: (lastPage): ApiResponse<StoriesHttpResponse> => {
-    //       if (lastPage.data?.hasMore) {
-    //           return lastPage.data.currentPage + 1;
-    //       }
-    //       return undefined;
-    //     };
-    // // queryFn: () => getAllStories(page, perPage, "all", "desc", "favoriteCount"),
-    // placeholderData: keepPreviousData,
   });
+
+  function handleLoadMore() {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }
 
   console.log(data);
 
@@ -96,13 +77,9 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
       <Section>
         <Container>
           <h2 className={css.title}>Популярні історії</h2>
-          {/* {data?.data?.data?.length ? (
-            <TravellersStories stories={data.data}></TravellersStories>
-          ) : (
-            <p>Something went wrong</p>
-          )} */}
+          <TravellersStories pages={data?.pages} />
 
-          {!isFetchingNextPage ? (
+          {isFetchingNextPage ? (
             <Pagination
               name={"Завантажується..."}
               onClick={handleLoadMore}
