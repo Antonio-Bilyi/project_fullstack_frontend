@@ -16,12 +16,13 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 24px;
-  max-width: 100%;
+  width: 100%;
 }
 
 .cardItem {
-  flex: 1 1 100%;
-  max-width: 100%;
+  /* flex: 1 1 100%; */
+  /* max-width: 100%; */
+  width: 100%;
   display: flex;
   justify-content: center;
 }
@@ -58,17 +59,19 @@
 
 /* планшет */
 @media (min-width: 768px) {
-  .cardsWrapper > * {
-    flex: 1 1 calc(50% - 24px);
-    max-width: 340px;
+  .cardItem {
+    /* flex: 1 1 100%; */
+    /* max-width: 100%; */
+    width: calc((100% - 24px) / 2);
   }
 }
 
 /* десктоп */
 @media (min-width: 1440px) {
-  .cardsWrapper > * {
-    flex: 1 1 calc(25% - 24px);
-    max-width: 310px;
+  .cardItem {
+    /* flex: 1 1 100%; */
+    /* max-width: 100%; */
+    width: calc((100% - 3 * 24px) / 4);
   }
 
   .viewAllButton {
