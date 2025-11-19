@@ -1,20 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 import css from "./TravellerInfoCard.module.css";
-
-type TravellerInfoCardProps = {
-  id: string;
-  name: string;
-  description: string;
-  avatarUrl: string;
-};
+import { Traveler } from "@/types/traveller";
 
 export default function TravellerInfoCard({
   id,
   name,
   description,
   avatarUrl,
-}: TravellerInfoCardProps) {
+}: Traveler) {
   return (
     <div className={css.card}>
       <div className={css.imageWrapper}>

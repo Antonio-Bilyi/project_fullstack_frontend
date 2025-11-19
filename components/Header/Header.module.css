@@ -1,0 +1,79 @@
+body {
+  scroll-padding-top: 64px;
+}
+
+.homeContainer {
+  /* min-width: 320px; */
+  /* margin: 0 auto; */
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  background: transparent;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10;
+}
+
+.homeContainer.scrolled {
+  background-color: rgba(10, 12, 20, 0.5);
+  backdrop-filter: blur(12px);
+}
+
+.defaultContainer {
+  padding-top: 16px;
+  padding-bottom: 16px;
+
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  z-index: 10;
+}
+
+.header_container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+}
+
+.homeLogoText {
+  /* font-family: var(--second-family); */
+  font-size: 17px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #fff;
+}
+
+.defaultLogoText {
+  /* font-family: var(--second-family); */
+  font-size: 17px;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: #000;
+}
+
+/* @media only screen and (min-width: 768px) {
+  .homeContainer {
+    padding: 16px 32px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .homeContainer {
+    max-width: 1440px;
+    padding: 16px 64px;
+  }
+} */

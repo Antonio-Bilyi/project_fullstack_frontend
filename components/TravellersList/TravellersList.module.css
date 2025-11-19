@@ -7,20 +7,53 @@
 }
 
 .cardsWrapper {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 24px;
-  /* width: 100%; */
+  max-width: 100%;
 }
 
-.cardsWrapper > * {
+.cardItem {
   flex: 1 1 100%;
-  max-width: 335px;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
-.pagination {
-  display: none;
+.buttonWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.viewAllButton {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4169e1;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.5;
+  transition: all 0.3s ease;
+}
+
+.viewAllButton:hover,
+.viewAllButton:focus {
+  border: 1px solid #4169e1;
+  background-color: #e8eeff;
+  color: #000;
+}
+
+.viewAllButton:active {
+  border: 1px solid #4169e1;
+  background-color: #7a96ea;
+  color: #fff;
 }
 
 /* планшет */
@@ -29,45 +62,16 @@
     flex: 1 1 calc(50% - 24px);
     max-width: 340px;
   }
-
-  .pagination {
-    display: flex;
-    justify-content: center;
-  }
-
-  .paginationBtn {
-    padding: 12px;
-    border: none;
-    border-radius: 8px;
-    background-color: #4169e1;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-    cursor: pointer;
-  }
-
-  .paginationBtn:hover,
-  .paginationBtn:focus {
-    border: 1px solid #4169e1;
-    background-color: #e8eeff;
-    color: #000;
-  }
-
-  .paginationBtn:active {
-    border: 1px solid #4169e1;
-    background-color: #7a96ea;
-    color: #000;
-  }
 }
 
 /* десктоп */
-@media (min-width: 1024px) {
+@media (min-width: 1440px) {
   .cardsWrapper > * {
     flex: 1 1 calc(25% - 24px);
     max-width: 310px;
   }
 
-  .paginationBtn {
+  .viewAllButton {
     padding: 10px 12px;
     font-size: 18px;
     font-weight: 500;

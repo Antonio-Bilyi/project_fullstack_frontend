@@ -1,0 +1,116 @@
+.navList {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.homeNavGroupLink {
+  font-size: 18px;
+  color: #fff;
+  transition:
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.homeNavGroupLink:hover,
+.homeNavGroupLink:focus-visible {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.homeNavGroupLink:active {
+  transform: scale(0.97);
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.defaultNavGroupLink {
+  font-size: 18px;
+  color: #000;
+  transition:
+    color 0.2s ease,
+    transform 0.15s ease;
+}
+
+.defaultNavGroupLink:hover,
+.defaultNavGroupLink:focus-visible {
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.defaultNavGroupLink:active {
+  transform: scale(0.97);
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.authGroup {
+  display: flex;
+  align-items: center;
+  gap: 16px; /* между Вхід і Реєстрація или между Опублікувати історію и блоком avatar+name+logout */
+  /* margin-left: auto; */
+}
+
+.homePublishStoryLink {
+  border: 1px solid #fff;
+  border-radius: 8px;
+  padding: 4px 10px;
+  width: 182px;
+  height: 32px;
+  background-color: #fff;
+
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #000;
+}
+
+.homePublishStoryLink:hover,
+.homePublishStoryLink:focus {
+  background-color: #f2f2f2;
+  border-color: #f2f2f2;
+}
+
+.homePublishStoryLink:active {
+  background-color: #e5e5e5;
+  transform: scale(0.96);
+}
+
+.defaultPublishStoryLink {
+  border: 1px solid #4169e1;
+  border-radius: 8px;
+  padding: 4px 10px;
+  width: 202px;
+  height: 35px;
+  background-color: #4169e1;
+
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.5;
+  color: #fff;
+
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.1s ease;
+}
+
+.defaultPublishStoryLink:hover,
+.defaultPublishStoryLink:focus {
+  background-color: #e8eeff;
+  border-color: #4169e1;
+  color: #000;
+}
+
+.defaultPublishStoryLink:active {
+  background-color: #7a96ea;
+  background-color: #4169e1;
+  color: #000;
+  transform: scale(0.96);
+}

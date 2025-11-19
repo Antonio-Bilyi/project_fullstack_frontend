@@ -19,7 +19,7 @@ export default function Join() {
   };
 
   return (
-    <Section>
+    <Section idSection={"Join"}>
       <Container>
         <div className={css.join}>
           <h2 className={css.title}>

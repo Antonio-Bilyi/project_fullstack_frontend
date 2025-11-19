@@ -2,7 +2,7 @@
 
 import { getUserProfile } from "@/lib/api/clientsApi/getUserProfile";
 import { useUserAuthStore } from "@/lib/store/authStore";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 interface AuthProviderProps {
   children: React.ReactNode;
@@ -11,6 +11,7 @@ interface AuthProviderProps {
 const AuthProvider = ({ children }: AuthProviderProps) => {
   const setAuth = useUserAuthStore((state) => state.setUser);
   const clearIsAuth = useUserAuthStore((state) => state.clearIsAuthenticated);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchCurrentUser = async () => {
@@ -23,10 +24,15 @@ const AuthProvider = ({ children }: AuthProviderProps) => {
         }
       } catch (error) {
         clearIsAuth();
+      } finally {
+        setIsLoading(false);
       }
     };
+
     fetchCurrentUser();
   }, [setAuth, clearIsAuth]);
+
+  if (isLoading) return null;
 
   return children;
 };

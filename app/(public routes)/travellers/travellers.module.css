@@ -1,0 +1,88 @@
+
+@media (min-width: 320px) and (max-width: 374px) {
+  .mainContent {
+    width: 100%;
+  }
+}
+
+@media (min-width: 375px) and (max-width: 767px) {
+  .mainContent {
+    width: 335px;
+  }
+}
+
+.title {
+font-size: 32px;
+line-height: 1.1;
+text-align: center;
+margin-bottom: 24px;
+}
+
+.page{
+    padding: 32px 20px 64px;
+}
+
+.loadMoreButton {
+    padding: 6px 12px;
+    border: 1px solid #4169e1;
+    border-radius: 8px;
+    background-color: #4169e1;
+    width: 100%;
+    height: 48px;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.5;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.loadMoreButton:hover,
+.loadMoreButton:focus{
+  background-color: #e8eeff;
+  color: #000;
+}
+
+.loadMoreButton:active{
+    background-color: #7a96ea;
+    color: #000;
+}
+
+.loadMoreButton:disabled {
+  opacity: 0.3;
+  background-color: #4169e1;
+  color: #ffff;
+  cursor: not-allowed;
+}
+
+@media only screen and (min-width: 768px) {
+.page{
+width: 704px;
+padding: 32px 32px 64px;
+}
+
+.title{
+font-size: 48px;
+}
+.loadMoreButton{
+  width: 135px;       
+  display: block;     
+  margin: 24px auto 0;    
+}
+}
+
+@media only screen and (min-width: 1440px) {
+.page{
+width: 1312px;
+padding: 48px 64px 72px;
+}
+
+.title{
+font-size: 56px;
+}
+
+.loadMoreButton{
+  font-size: 18px;
+}
+}
