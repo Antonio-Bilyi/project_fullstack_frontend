@@ -24,6 +24,7 @@ export default function TravellerInfo({ traveller, user }: TravellerInfoProps) {
           width={120}
           height={120}
           className={css.avatar}
+          unoptimized
         />
       </div>
       <div className={css.info}>

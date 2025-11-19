@@ -35,6 +35,7 @@ export default function TravellersStoriesItem({
         decoding="async"
         loading="lazy"
         className={css.storyImg}
+        unoptimized
       />
       <div className={css.contentCard}>
         {/* <div className={css.storyInfoWrapper}> */}
@@ -52,6 +53,7 @@ export default function TravellersStoriesItem({
             decoding="async"
             loading="lazy"
             className={css.userImg}
+            unoptimized
           />
           <div className={css.userNameWrapper}>
             <p className={css.userName}>{ownerName}</p>

@@ -9,13 +9,9 @@ export type Traveler = {
 
 export type Traveller = Traveler;
 
-export type TravelerStories = {
+export interface TravelerStoriesHttpResponse {
   user: Traveler;
   stories: Story[];
-};
-
-export interface TravelerStoriesHttpResponse {
-  data: TravelerStories;
   page: number;
   perPage: number;
   totalItems: number;

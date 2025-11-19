@@ -7,7 +7,7 @@ export const getTravellerStories = async (
   page: number,
   perPage: number
 ): Promise<ApiResponse<TravelerStoriesHttpResponse>> => {
-  const endPoint = `/users/${travellerId}/stories`;
+  const endPoint = `/users/${travellerId}`;
 
   const params = {
     page,

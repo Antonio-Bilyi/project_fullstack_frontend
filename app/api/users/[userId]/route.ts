@@ -11,7 +11,11 @@ interface RouteContext {
 export async function GET(req: Request, context: RouteContext) {
   try {
     const { userId } = await context.params;
+    const { searchParams } = new URL(req.url);
     const cookieStore = await cookies();
+
+    const page = searchParams.get("page") || "1";
+    const perPage = searchParams.get("perPage") || "10";
 
     const cookieHeader =
       cookieStore.size > 0
@@ -21,6 +25,7 @@ export async function GET(req: Request, context: RouteContext) {
         : "";
 
     const { data } = await api.get(`/users/${userId}`, {
+      params: { page, perPage },
       headers: cookieHeader ? { Cookie: cookieHeader } : {},
     });
 

@@ -69,7 +69,8 @@ export default function TravellerByIdClient({
   const hasStories =
     data?.pages &&
     data.pages.length > 0 &&
-    data.pages[0].data?.data?.stories.length > 0;
+    data.pages[0].data?.stories &&
+    data.pages[0].data.stories.length > 0;
 
   return (
     <HydrationBoundary state={dehydratedState}>

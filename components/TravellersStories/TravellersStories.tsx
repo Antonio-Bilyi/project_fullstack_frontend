@@ -39,11 +39,13 @@ export default function TravellersStories({
       <ul className={css.storiesList}>
         {pages.map((group, i) => (
           <React.Fragment key={i}>
-            {group.data?.data && "stories" in group.data.data
-              ? group.data.data.stories.map((story) => (
+            {group.data && "stories" in group.data
+              ? group.data.stories.map((story) => (
                   <TravellersStoriesItem story={story} key={story._id} />
                 ))
-              : Array.isArray(group.data?.data) &&
+              : group.data &&
+                "data" in group.data &&
+                Array.isArray(group.data.data) &&
                 group.data.data.map((story) => (
                   <TravellersStoriesItem story={story} key={story._id} />
                 ))}
