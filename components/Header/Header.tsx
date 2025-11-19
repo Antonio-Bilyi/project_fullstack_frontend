@@ -5,8 +5,11 @@ import css from "./Header.module.css";
 import HeaderRight from "./HeaderRight";
 import Container from "../Container/Container";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
-export default function Header({ isHome = false }) {
+export default function Header() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {

@@ -60,7 +60,7 @@ export default function AuthNavigation({
 
   return (
     <li
-      className={`${css.navItem} ${css.authUser} ${isMobile ? css.authUserMobile : ""}`}
+      className={`${css.navItem} ${css.authUser} ${isMobile ? css.authUserMobile : ""} ${!isMobile && isHome ? css.authUserHome : ""}`}
     >
       {/* Имя + аватар */}
       <div className={`${css.userInfo} ${isMobile ? css.userInfoMobile : ""}`}>
