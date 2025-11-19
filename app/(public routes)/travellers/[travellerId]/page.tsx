@@ -4,31 +4,15 @@ import {
   QueryClient,
 } from "@tanstack/react-query";
 import { getTravellerStories } from "@/lib/api/clientsApi/getTravellerStories";
+import { getTravellerInfo } from "@/lib/api/clientsApi/getTravellerInfo";
 import TravellerByIdClient from "@/components/TravellerById/TravellerById.client";
 import Section from "@/components/Section/Section";
 import Container from "@/components/Container/Container";
-import { Traveler } from "@/types/traveller";
 
 interface PageProps {
   params: Promise<{
     travellerId: string;
   }>;
-}
-
-async function getTravellerInfo(travellerId: string): Promise<Traveler | null> {
-  const apiBase = process.env.NEXT_PUBLIC_API_URL;
-  if (!apiBase) return null;
-
-  try {
-    const res = await fetch(`${apiBase}/api/users/${travellerId}`, {
-      cache: "no-store",
-    });
-    if (!res.ok) return null;
-    const response = await res.json();
-    return response.data ?? null;
-  } catch {
-    return null;
-  }
 }
 
 export default async function TravellerByIdPage({ params }: PageProps) {
