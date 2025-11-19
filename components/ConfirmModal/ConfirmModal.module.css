@@ -73,9 +73,9 @@
 }
 
 /* ===============================
-   Header (текст модалки)
+   Body (текст модалки)
 ================================= */
-.modalHeader {
+.modalBody {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,7 +103,7 @@
 /* ===============================
    Кнопки
 ================================= */
-.modalButtons {
+.modalActions {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -120,9 +120,9 @@
   background-color: var(--modal-btn-bg);
   color: var(--modal-text);
   font-family: var(--font-family-nunito);
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
-  line-height: 27px;
+  line-height: 24px;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -206,16 +206,17 @@
   }
 
   .modalTitle {
-    font-size: 48px;
-    line-height: 57.6px;
+    font-size: 32px;
+    line-height: 1.3;
   }
 
   .modalDescription {
-    font-size: 20px;
-    line-height: 30px;
+    font-size: 16px;
+    line-height: 24px;
+    max-width: 640px;
   }
 
-  .modalButtons {
+  .modalActions {
     flex-direction: row;
     justify-content: center;
     width: 430px;
@@ -224,5 +225,12 @@
 
   .modalButton {
     flex: 1;
+  }
+}
+
+@media (min-width: 1440px) {
+  .modalTitle {
+    font-size: 48px;
+    line-height: 1.2;
   }
 }

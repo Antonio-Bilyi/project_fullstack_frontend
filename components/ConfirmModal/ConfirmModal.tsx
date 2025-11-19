@@ -126,16 +126,16 @@ export default function ConfirmModal({
           <div className={css.closeIcon} />
         </button>
 
-        <header className={css.modalHeader}>
+        <section className={css.modalBody}>
           <h2 id='modal-title' className={css.modalTitle}>
             {title}
           </h2>
           <p id='modal-description' className={css.modalDescription}>
             {description}
           </p>
-        </header>
+        </section>
 
-        <footer className={css.modalButtons}>
+        <div className={css.modalActions}>
           <button
             className={css.modalButton}
             onClick={() => {
@@ -154,7 +154,7 @@ export default function ConfirmModal({
           >
             {confirmButtonText}
           </button>
-        </footer>
+        </div>
       </div>
     </div>
   );
