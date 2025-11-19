@@ -1,20 +1,10 @@
 import type { User } from "@/types/user";
+import { nextServer } from "@/lib/api/api";
 
-export const getUserProfile = async (): Promise<User | null> => {
-  try {
-    const res = await fetch("/api/auth/currentUser", {
-      method: "GET",
-      credentials: "include",
-    });
+export const getUserProfile = async (): Promise<User> => {
+    const endPoint = '/users/current';
 
-    if (!res.ok) {
-      return null;
-    }
+    const response = await nextServer.get<User>(endPoint);
 
-    const result = await res.json();
-
-    return (result.data?.data || result.data || result) as User;
-  } catch {
-    return null;
-  }
-};
+    return response.data
+}

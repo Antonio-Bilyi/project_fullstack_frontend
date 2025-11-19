@@ -20,7 +20,6 @@ export default function TravellerInfoCard({
           height={112}
           decoding="async"
           loading="lazy"
-          unoptimized
         />
       </div>
 

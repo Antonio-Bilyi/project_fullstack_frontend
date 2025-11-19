@@ -10,16 +10,20 @@
   list-style: none;
   padding: 0;
   margin: 0;
-  box-sizing: border-box;
 
-  display: grid;
-  grid-template-columns: 1fr;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 24px;
-  width: 100%;
+  max-width: 100%;
 }
 
 .cardItem {
-  width: 100%;
+  flex: 1 1 100%;
+  max-width: 100%;
+  display: flex;
+  justify-content: center;
 }
 
 .buttonWrapper {
@@ -54,15 +58,17 @@
 
 /* планшет */
 @media (min-width: 768px) {
-  .cardsWrapper {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .cardsWrapper > * {
+    flex: 1 1 calc(50% - 24px);
+    max-width: 340px;
   }
 }
 
 /* десктоп */
 @media (min-width: 1440px) {
-  .cardsWrapper {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+  .cardsWrapper > * {
+    flex: 1 1 calc(25% - 24px);
+    max-width: 310px;
   }
 
   .viewAllButton {
