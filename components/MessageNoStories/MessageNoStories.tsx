@@ -1,4 +1,6 @@
-import { useRouter } from 'next/router';
+"use Client";
+
+import { useRouter } from 'next/navigation';
 import styles from './MessageNoStories.module.css';
 
 interface MessageNoStoriesProps {
