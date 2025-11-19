@@ -53,6 +53,7 @@ export default function RootLayout({
       <body className={`${nunitoSans.variable} ${sora.variable}`}>
         <TanStackProvider>
           <AuthProvider>
+            <Header />
             <main>
               {children}
               {modal}
