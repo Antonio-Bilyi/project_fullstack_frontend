@@ -26,3 +26,16 @@ export interface StoriesHttpResponse {
     hasNextPage: boolean;
     hasPreviousPage: boolean;
 }
+
+export interface httpResponse<T> {
+    data: T[];
+    page: number;
+    perPage: number;
+    totalItems: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+}
+
+export type StoriesHttpResponseInfinity = httpResponse<T> ;
+

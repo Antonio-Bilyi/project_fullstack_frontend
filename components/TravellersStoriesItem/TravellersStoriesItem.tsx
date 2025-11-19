@@ -26,7 +26,7 @@ export default function TravellersStoriesItem({
     typeof story.ownerId !== "string" ? story.ownerId.name : "Default foto";
 
   return (
-    <>
+    <li className={css.StoryItem}>
       <Image
         src={story.img}
         alt={story.title}
@@ -44,7 +44,6 @@ export default function TravellersStoriesItem({
         <p className={css.storyArticle}>{story.article}</p>
         {/* </div> */}
         <div className={css.userInfo}>
-          <></>
           <Image
             src={ownerPhoto}
             alt="user.name"
@@ -59,6 +58,7 @@ export default function TravellersStoriesItem({
             <div className={css.favWrapper}>
               <p className={css.storyDate}>{dateStory}</p>
               <p className={css.storyFavCnt}>
+                {story.favoriteCount}
                 <svg className={css.storySaveSvg} width="16" height="16">
                   <use href="/svg-sprite.svg#icon-bookmark"></use>
                 </svg>
@@ -72,7 +72,7 @@ export default function TravellersStoriesItem({
             prefetch={false}
             className={css.storyDetailLink}
           >
-            Переглянути історію
+            Переглянути статтю
           </Link>
           <Link
             href="/stories/${storyId}/edit"
@@ -85,7 +85,7 @@ export default function TravellersStoriesItem({
           </Link>
         </div>
       </div>
-    </>
+    </li>
   );
 }
 

@@ -11,12 +11,15 @@ interface TravellersStoriesProps {
 
 export default function TravellersStories({ stories }: TravellersStoriesProps) {
   return (
-    <ul className={css.storiesList}>
-      {stories.map((story) => (
-        <li key={story._id} className={css.StoryItem}>
-          <TravellersStoriesItem story={story}></TravellersStoriesItem>
-        </li>
-      ))}
-    </ul>
+    <>
+      <ul className={css.storiesList}>
+        {stories.map((story) => (
+          <TravellersStoriesItem
+            story={story}
+            key={story._id}
+          ></TravellersStoriesItem>
+        ))}
+      </ul>
+    </>
   );
 }

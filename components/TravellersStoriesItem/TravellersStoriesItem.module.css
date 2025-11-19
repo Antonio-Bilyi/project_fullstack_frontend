@@ -1,3 +1,11 @@
+.StoryItem {
+  width: 100%;
+  border: 0px solid var(--color-scheme-1-border);
+  border-radius: 16px;
+  background: var(--color-scheme-2-foreground);
+  overflow: hidden;
+}
+
 .storyImg {
   width: 100%;
   height: 223px;
@@ -26,6 +34,9 @@
   -webkit-line-clamp: 2;
   overflow: hidden;
   text-overflow: ellipsis;
+  height: 54px;
+  display: inline-flex;
+  align-items: flex-start;
 }
 
 .storyArticle {
@@ -44,7 +55,9 @@
 .userInfo {
   display: flex;
   flex-direction: raw;
+  align-items: center;
   gap: 16px;
+  margin-bottom: 24px;
 }
 
 .userImg {
@@ -55,8 +68,32 @@
 }
 
 .userNameWrapper {
+  /* display: flex; */
   font-size: 12px;
   font-weight: 600;
+  justify-content: center;
+}
+
+.userName {
+  margin-bottom: 3px;
+}
+
+.storyDate {
+  position: relative;
+}
+
+.storyDate::after {
+  content: "";
+  position: absolute;
+
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--foreground);
+  top: 50%;
+  left: 100%;
+  transform: translate(150%, -50%);
+  padding: 1px;
 }
 
 .favWrapper {
@@ -64,14 +101,97 @@
   gap: 25px;
 }
 
-.userName {
-}
-
-.storyDate {
-}
-
 .storyFavCnt {
+  display: flex;
+  align-items: center;
 }
 
-.storySaveSvg {
+.buttonsSection {
+  display: flex;
+  flex-direction: raw;
+  gap: 10px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.storyDetailLink {
+  display: flex;
+  background-color: 1px solid var(--color-scheme-2-border);
+  background-color: var(--opacity-neutral-darkest-5);
+  border-radius: 8px;
+  padding: 12px;
+  height: 48px;
+  font-weight: 500;
+  width: 229px;
+  align-items: center;
+  justify-content: center;
+}
+
+.storyEditLink {
+  display: flex;
+  background-color: 1px solid var(--color-scheme-2-border);
+  background-color: var(--opacity-neutral-darkest-5);
+  height: 48px;
+  width: 48px;
+  padding: 12px;
+  border-radius: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* для гумової верстки на малих екранах трохи зменшуємо паддінги */
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+  .storyDetailLink {
+    border-radius: 12px 10px;
+  }
+
+  .storyEditLink {
+    padding: 12px 10px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .StoryItem {
+    width: calc((100% - 24px) / 2);
+  }
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1440px) {
+  .StoryItem {
+    width: calc((100% - 2 * 24px) / 3);
+  }
+
+  .category {
+    font-size: 16px;
+  }
+
+  .storyTittle {
+    font-size: 26px;
+    height: 78px;
+  }
+
+  .storyArticle {
+    font-size: 18px;
+  }
+
+  .userNameWrapper {
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  .userName {
+    margin-bottom: 3px;
+    font-weight: 600;
+  }
+
+  .favWrapper {
+    display: flex;
+    gap: 27px;
+  }
+
+  .storyDetailLink {
+    font-size: 18px;
+    width: 315px;
+  }
 }

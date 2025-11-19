@@ -12,7 +12,7 @@ const Popular = async () => {
 
   await queryClient.prefetchQuery({
     queryKey: ["stories"],
-    queryFn: () => getAllStoriesServer(1, 3, "all", "favoriteCount", "desc"),
+    queryFn: () => getAllStoriesServer(1, 3, "ALL", "favoriteCount", "desc"),
   });
 
   const dehydratedState = dehydrate(queryClient);

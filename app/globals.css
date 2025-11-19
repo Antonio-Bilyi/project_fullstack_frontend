@@ -4,9 +4,13 @@
   --background: #f7f9ff;
   --foreground: #000;
   --color-royal-blue-lighter: #e8eeff;
+  --color-royal-blue: #4169e1;
+  --color-white: #fff;
   --opacity-neutral-darkest-15: rgba(0, 0, 0, 0.15);
+  --opacity-neutral-darkest-5: rgba(0, 0, 0, 0.05);
   --color-scheme-1-border: var(--opacity-neutral-darkest-15);
   --color-scheme-2-foreground: var(--color-royal-blue-lighter);
+  --color-scheme-2-border: var(--opacity-neutral-darkest-15);
 }
 
 /* @media (prefers-color-scheme: dark) {
@@ -118,6 +122,6 @@ button {
   }
 
   h2 {
-    font-size: 48px;
+    font-size: 52px;
   }
 }
