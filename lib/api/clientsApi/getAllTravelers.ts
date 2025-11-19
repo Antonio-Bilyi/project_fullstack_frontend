@@ -1,18 +1,19 @@
 import { nextServer } from '@/lib/api/api';
-import type { TravelersResponse, TravelersList } from "@/types/user";
+import type { TravelersResponse } from "@/types/traveller";
+import type { User } from "@/types/user";
 
-export const getAllTravelers = async (): Promise<TravelersList | null> => {
-  try {
-    
+export const getAllTravelers = async (page: number, perPage: number): Promise<User[]> => {
+  try {    
     const response = await nextServer.get<TravelersResponse>("/users", {
       params: {
-        page: 1,
+        page,
+        perPage,
       },
     });
 
-    return response.data.data;
+    return response.data.data ?? [];
   } catch (error) {
     console.error("Error fetching travelers:", error);
-    return null;
+    return [];
   }
 };

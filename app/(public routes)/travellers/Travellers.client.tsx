@@ -1,61 +1,87 @@
 "use client";
 
+import {
+  HydrationBoundary,
+  useInfiniteQuery,
+  DehydratedState,
+} from "@tanstack/react-query";
+import { getAllTravelers } from "@/lib/api/clientsApi/getAllTravelers";
+import Pagination from "../../../components/Pagination/Pagination";
 import { useState, useEffect } from "react";
 import TravellersList from "@/components/TravellersList/TravellersList";
 import Section from "@/components/Section/Section";
 import Container from "@/components/Container/Container";
 import css from "./travellers.module.css";
-import type { TravelersList } from "@/types/user";
+import type { TravelersResponse } from "@/types/traveller";
+import type { User } from "@/types/user";
 
+interface AllTravelersProps {
+  dehydratedState: DehydratedState;
+}
 
-interface Props {
- initialTravelers: TravelersList}
+export default function TravellersClient({dehydratedState}: AllTravelersProps) {
+    const [perPage, setPerPage] = useState(3);
 
-export default function TravellersClient({ initialTravelers }: Props) {
-  const [visibleCount, setVisibleCount] = useState(() => {
-    if (typeof window === "undefined") return 8;
-    if (window.innerWidth >= 1440) return 12;
-    return 8;
-  });
+  useEffect(() => {
+    const updatePerPage = () => {
+      const windowWidth = window.innerWidth;
 
-    useEffect(() => {
-      const resizeHandler = () => {
-        if (window.innerWidth >= 1440) setVisibleCount(12);
-        else setVisibleCount(8);
-      };
-
-      window.addEventListener("resize", resizeHandler);
-      return () => window.removeEventListener("resize", resizeHandler);
-    }, []);
-
-
-    const handleLoadMore = () => {
-      setVisibleCount((c) => c + 4);
+      if (windowWidth >= 1440) setPerPage(12);
+      else setPerPage(8);
     };
-  
-  const hasMore = visibleCount < initialTravelers.data.length;
-  console.log(initialTravelers.data.slice(0, visibleCount));
 
-    return (
+    updatePerPage();
+
+    window.addEventListener("resize", updatePerPage);
+
+    return () => window.removeEventListener("resize", updatePerPage);
+  }, []);
+
+   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<
+  TravelersResponse, Error, TravelersResponse, [string, number]
+>({
+  queryKey: ["traveler", perPage],
+  queryFn: ({ pageParam = 1 }: { pageParam?: number }) => 
+    getAllTravelers(pageParam, perPage),
+  getNextPageParam: (lastPage) => lastPage.hasNextPage ? lastPage.page + 1 : undefined,
+});
+      
+
+const travelers: User[] = data?.pages.flatMap(page => page.data) ?? [];
+
+ function handleLoadMore() {
+    if (hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }
+
+  return (
+    <HydrationBoundary state={dehydratedState}>
       <Section>
         <Container>
-          <div className={css.page}>
+          {/* <div className={css.page}> */}
             <h2 className={css.title}>Мандрівники</h2>
 
             <TravellersList
-              travelers={initialTravelers.data.slice(0, visibleCount)}
+              travelers={travelers}
               showViewAllButton={false}
-            />
-            {hasMore && (
-            <button
+          />
+          <div className={css.paginationWrapper}>
+          {isFetchingNextPage ? (      
+            <Pagination
+              name={"Вже скоро..."}
               onClick={handleLoadMore}
-              className={css.loadMoreButton}
-            >
-              Показати ще
-            </button>
-          )}
-          </div>
+            ></Pagination>
+          ) : hasNextPage ? (
+            <Pagination
+              name={"Показати ще"}
+              onClick={handleLoadMore}
+          ></Pagination>
+            ) : null} 
+            </div>
+          {/* </div> */}
         </Container>
       </Section>
+  </HydrationBoundary>
     );
   }

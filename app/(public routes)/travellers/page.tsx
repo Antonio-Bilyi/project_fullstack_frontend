@@ -1,7 +1,6 @@
 import TravellersClient from "./Travellers.client";
 import { getAllTravelers } from "@/lib/api/serverApi/getAllTravelers";
-import { emptyTravelersList } from "@/types/user";
-
+import { QueryClient, dehydrate } from "@tanstack/react-query";
 
 export const metadata = {
   title: "Мандрівники",
@@ -9,12 +8,15 @@ export const metadata = {
 };
 
 export default async function TravellersPage() {
-  const travelers = await getAllTravelers();
-   const safeTravelers = travelers ?? emptyTravelersList; 
-console.log("Travelers:", travelers);
-  return (
-    <main>
-      <TravellersClient initialTravelers={safeTravelers} />
-    </main>
-  );
+  
+  const queryClient = new QueryClient();
+
+  await queryClient.prefetchQuery({
+    queryKey: ["travelers", 1, 3], 
+    queryFn: () => getAllTravelers(1, 3),
+  });
+
+  const dehydratedState = dehydrate(queryClient);
+  
+  return <TravellersClient dehydratedState={dehydratedState} />;
 }

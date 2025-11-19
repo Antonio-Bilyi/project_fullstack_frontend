@@ -1,14 +1,14 @@
 
 @media (min-width: 320px) and (max-width: 374px) {
-  .mainContent {
+  /* .mainContent {
     width: 100%;
-  }
+  } */
 }
 
 @media (min-width: 375px) and (max-width: 767px) {
-  .mainContent {
+  /* .mainContent {
     width: 335px;
-  }
+  } */
 }
 
 .title {
@@ -18,10 +18,13 @@ text-align: center;
 margin-bottom: 24px;
 }
 
-.page{
-    padding: 32px 20px 64px;
+.paginationWrapper{
+  margin-top: 24px;
 }
-
+/* .page{
+    padding: 32px 20px 64px;
+} */
+/* 
 .loadMoreButton {
     padding: 6px 12px;
     border: 1px solid #4169e1;
@@ -54,35 +57,35 @@ margin-bottom: 24px;
   background-color: #4169e1;
   color: #ffff;
   cursor: not-allowed;
-}
+} */
 
 @media only screen and (min-width: 768px) {
-.page{
+/* .page{
 width: 704px;
 padding: 32px 32px 64px;
-}
+} */
 
 .title{
 font-size: 48px;
 }
-.loadMoreButton{
+/* .loadMoreButton{
   width: 135px;       
   display: block;     
   margin: 24px auto 0;    
-}
+} */
 }
 
 @media only screen and (min-width: 1440px) {
-.page{
+/* .page{
 width: 1312px;
 padding: 48px 64px 72px;
-}
+} */
 
 .title{
 font-size: 56px;
 }
 
-.loadMoreButton{
+/* .loadMoreButton{
   font-size: 18px;
-}
+} */
 }
