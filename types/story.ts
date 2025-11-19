@@ -1,5 +1,6 @@
 import { Category } from "./category";
 import { Owner } from "./owner";
+import { User } from "./user";
 
 type OwnerType = string | Owner;
 type CategoryType = string | Category;
@@ -27,6 +28,11 @@ export interface StoriesHttpResponse {
     hasPreviousPage: boolean;
 }
 
+export interface StoryFavHttpResponse {
+  user: User;
+  story: Story; 
+}
+
 export interface httpResponse<T> {
     data: T[];
     page: number;
@@ -37,5 +43,5 @@ export interface httpResponse<T> {
     hasPreviousPage: boolean;
 }
 
-export type StoriesHttpResponseInfinity = httpResponse<T> ;
+
 
