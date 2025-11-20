@@ -1,7 +1,9 @@
 import { Metadata } from "next";
-import css from "./page.module.css";
+import Link from "next/link";
+import Header from "@/components/Header/Header";
 import Section from "@/components/Section/Section";
 import Container from "@/components/Container/Container";
+import styles from "./not-found.module.css";
 
 export const metadata: Metadata = {
   title: "Not found",
@@ -26,12 +28,24 @@ export const metadata: Metadata = {
 
 const NotFound = () => {
   return (
-    <Section>
-      <Container>
-        <h2 className={css.title}>404 - Page not found</h2>
-        <p>Sorry, the page you are looking for does not exist.</p>
-      </Container>
-    </Section>
+    <>
+      <Header />
+      <Section>
+        <Container>
+          <div className={styles.wrapper}>
+            <h2 className={styles.title}>
+              404 - Сторінку не знайдено
+            </h2>
+            <p className={styles.description}>
+              На жаль, сторінка, яку ви шукаєте, не існує або була видалена.
+            </p>
+            <Link href="/" className={styles.link}>
+              Повернутися на головну
+            </Link>
+          </div>
+        </Container>
+      </Section>
+    </>
   );
 };
 
