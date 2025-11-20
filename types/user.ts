@@ -1,13 +1,13 @@
 export interface User {
-    id: string;
+    _id: string;
     name: string;
-    email: string;
+    email?: string;
     avatarUrl: string;
     articlesAmount: number;
     description: string;
     favouriteArticles: [string];
-    createdAt: string;
-    updatedAt: string;    
+    createdAt?: string;
+    updatedAt?: string;    
 }
 
 export interface UserLoginRequest {

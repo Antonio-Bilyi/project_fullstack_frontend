@@ -13,21 +13,24 @@ import Section from "@/components/Section/Section";
 import Container from "@/components/Container/Container";
 import css from "./travellers.module.css";
 import type { TravelersResponse } from "@/types/traveller";
-import type { User } from "@/types/user";
+import { ApiResponse } from "@/types/api";
+import React from "react";
 
 interface AllTravelersProps {
   dehydratedState: DehydratedState;
 }
 
-export default function TravellersClient({dehydratedState}: AllTravelersProps) {
-    const [perPage, setPerPage] = useState(3);
+export default function TravellersClient({
+  dehydratedState,
+}: AllTravelersProps) {
+  const [perPage, setPerPage] = useState(8);
 
   useEffect(() => {
     const updatePerPage = () => {
       const windowWidth = window.innerWidth;
 
-      if (windowWidth >= 1440) setPerPage(12);
-      else setPerPage(8);
+      if (windowWidth < 1440) setPerPage(8);
+      else setPerPage(12);
     };
 
     updatePerPage();
@@ -37,51 +40,56 @@ export default function TravellersClient({dehydratedState}: AllTravelersProps) {
     return () => window.removeEventListener("resize", updatePerPage);
   }, []);
 
-   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } = useInfiniteQuery<
-  TravelersResponse, Error, TravelersResponse, [string, number]
->({
-  queryKey: ["traveler", perPage],
-  queryFn: ({ pageParam = 1 }: { pageParam?: number }) => 
-    getAllTravelers(pageParam, perPage),
-  getNextPageParam: (lastPage) => lastPage.hasNextPage ? lastPage.page + 1 : undefined,
-});
-      
+  const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
+    useInfiniteQuery({
+      queryKey: ["travelers", perPage] as const,
+      queryFn: ({ pageParam }: { pageParam: number }) =>
+        getAllTravelers(pageParam, perPage),
+      initialPageParam: 1,
+      getNextPageParam: (lastPage: ApiResponse<TravelersResponse>) => {
+        if (lastPage.data?.hasNextPage) {
+          return lastPage.data.page + 1;
+        }
+        return undefined;
+      },
+    });
 
-const travelers: User[] = data?.pages.flatMap(page => page.data) ?? [];
-
- function handleLoadMore() {
+  function handleLoadMore() {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
     }
   }
+
+  const allTravelers =
+    data?.pages
+      .flatMap((page) => page.data?.data || []) // Звертаємося до page.data?.data
+      .filter(Boolean) || [];
 
   return (
     <HydrationBoundary state={dehydratedState}>
       <Section>
         <Container>
           {/* <div className={css.page}> */}
-            <h2 className={css.title}>Мандрівники</h2>
+          <h2 className={css.title}>Мандрівники</h2>
 
-            <TravellersList
-              travelers={travelers}
-              showViewAllButton={false}
-          />
+          <TravellersList travelers={allTravelers} showViewAllButton={false} />
+
           <div className={css.paginationWrapper}>
-          {isFetchingNextPage ? (      
-            <Pagination
-              name={"Вже скоро..."}
-              onClick={handleLoadMore}
-            ></Pagination>
-          ) : hasNextPage ? (
-            <Pagination
-              name={"Показати ще"}
-              onClick={handleLoadMore}
-          ></Pagination>
-            ) : null} 
-            </div>
+            {isFetchingNextPage ? (
+              <Pagination
+                name={"Вже скоро..."}
+                onClick={handleLoadMore}
+              ></Pagination>
+            ) : hasNextPage ? (
+              <Pagination
+                name={"Показати ще"}
+                onClick={handleLoadMore}
+              ></Pagination>
+            ) : null}
+          </div>
           {/* </div> */}
         </Container>
       </Section>
-  </HydrationBoundary>
-    );
-  }
+    </HydrationBoundary>
+  );
+}

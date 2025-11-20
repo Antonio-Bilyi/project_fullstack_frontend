@@ -1,15 +1,15 @@
-import {User} from "./user"
-
 export type Traveler = {
-  id: string;
+  _id: string;
   name: string;
   avatarUrl: string;
   description: string;
+  favouriteArticles?: [string];
+  articlesAmount?: number;
 };
 
 
 export interface TravelersResponse {
-  data: User[];
+  data: Traveler[];
   page: number;
   perPage: number;
   totalItems: number;

@@ -8,15 +8,14 @@ export const metadata = {
 };
 
 export default async function TravellersPage() {
-  
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ["travelers", 1, 3], 
-    queryFn: () => getAllTravelers(1, 3),
+    queryKey: ["travelers"],
+    queryFn: () => getAllTravelers(1, 8),
   });
 
   const dehydratedState = dehydrate(queryClient);
-  
+
   return <TravellersClient dehydratedState={dehydratedState} />;
 }

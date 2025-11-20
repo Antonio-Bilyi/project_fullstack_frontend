@@ -19,7 +19,7 @@ export default function TravellersList({
     <div className={css.wrapper}>
       <ul className={css.cardsWrapper}>
         {displayedTravelers.map((traveler) => (
-          <li key={traveler.id} className={css.cardItem}>
+          <li key={traveler._id} className={css.cardItem}>
             <TravellerInfoCard {...traveler} />
           </li>
         ))}
