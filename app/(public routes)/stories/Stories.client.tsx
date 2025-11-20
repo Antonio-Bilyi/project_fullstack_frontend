@@ -1,14 +1,15 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { useQuery, useInfiniteQuery } from '@tanstack/react-query';
+import {useQuery, useInfiniteQuery, DehydratedState} from '@tanstack/react-query';
 import { getStories, getCategories } from '@/lib/api/clientsApi/clientApi';
 import TravellersStories from '@/components/TravellersStories/TravellersStories';
 import Container from '@/components/Container/Container';
 import { PaginatedStoriesResponse } from '@/types/story';
 import { Category } from '@/types/category';
 import css from './page.module.css';
+import Pagination from "@/components/Pagination/Pagination";
 
 interface StoriesClientProps {
   initialStories: PaginatedStoriesResponse;
@@ -62,7 +63,6 @@ const StoriesClient = ({ initialStories, initialCategories, filterCategory = 'Al
   });
 
   const stories = data?.pages.map((page) => page.data) ?? [];
-    console.log(stories)
   const handleLoadMore = () => {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
@@ -113,19 +113,20 @@ const StoriesClient = ({ initialStories, initialCategories, filterCategory = 'Al
           </div>
         ) : (
           <>
-            <TravellersStories stories={stories} />
+              <TravellersStories pages={data?.pages} />
 
-            {hasNextPage && (
-              <div className={css.loadMoreWrapper}>
-                <button
-                  className={css.loadMoreButton}
-                  onClick={handleLoadMore}
-                  disabled={isFetchingNextPage}
-                >
-                  {isFetchingNextPage ? 'Завантаження...' : 'Показати ще'}
-                </button>
-              </div>
-            )}
+              {isFetchingNextPage ? (
+                  <Pagination
+                      name={"Вже скоро..."}
+                      onClick={handleLoadMore}
+                  ></Pagination>
+              ) : hasNextPage ? (
+                  <Pagination
+                      name={"Показати ще"}
+                      onClick={handleLoadMore}
+                  ></Pagination>
+              ) : null}
+
           </>
         )}
       </div>

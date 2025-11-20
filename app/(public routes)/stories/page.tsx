@@ -2,6 +2,7 @@ import {dehydrate, HydrationBoundary, QueryClient} from "@tanstack/react-query";
 import StoriesClient from "@/app/(public routes)/stories/Stories.client";
 import {getCategoriesServer, getStoriesServer} from "@/lib/api/serverApi/serverApi";
 import {Metadata} from "next";
+import {getAllStoriesServer} from "@/lib/api/serverApi/getAllStories";
 
 interface PageProps {
     searchParams: Promise<{ category?: string; page?: string }>;
@@ -41,9 +42,10 @@ const StoriesPage = async ({ searchParams }: PageProps) => {
 
     await queryClient.prefetchInfiniteQuery({
         queryKey: ['stories', category],
-        queryFn: () => initialStories,
+        queryFn: () => getAllStoriesServer(1, 3, "ALL", "favoriteCount", "desc"),
         initialPageParam: 1,
     });
+
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
@@ -51,6 +53,7 @@ const StoriesPage = async ({ searchParams }: PageProps) => {
                 initialStories={initialStories}
                 initialCategories={categories}
                 filterCategory={category}
+
             />
         </HydrationBoundary>
     );
