@@ -20,7 +20,7 @@ export default function LoginPage() {
     try {
       const user = await login(values);
       if (user.data) setUser(user.data);
-      toast.success("Вхід успішний! Перенаправляємо...");
+      // toast.success("Вхід успішний! Перенаправляємо...");
       router.push("/");
     } catch (error: unknown) {
       logErrorResponse(error);

@@ -26,8 +26,10 @@ export default function TravellersStoriesItem({
   story,
 }: TravellersStoriesItemProps) {
   // стани
-  const ownerId =
-    typeof story.category !== "string" ? story.ownerId._id : story.ownerId;
+  // const ownerId =
+  //   typeof story.category !== "string" ? story.ownerId._id : story.ownerId;
+    const ownerId =
+    typeof story.ownerId === "string" ? story.ownerId : story.ownerId._id;
 
   const user = useUserAuthStore((state) => state.user);
   const isAuthenticated = useUserAuthStore((state) => state.isAuthenticated);
@@ -44,7 +46,10 @@ export default function TravellersStoriesItem({
     const updateStates = () => {
       if (!isAuthenticated || !user) return;
       if (ownerId === user._id) setIsOwner(true);
-      setIsFavourite(user.favouriteArticles.includes(story._id));
+      // setIsFavourite(user.favouriteArticles.includes(story._id));
+      setIsFavourite(Array.isArray(user.favouriteArticles) && user.favouriteArticles.includes(story._id));
+      
+
     };
 
     updateStates();
@@ -94,13 +99,15 @@ export default function TravellersStoriesItem({
 
   // додати історію
   function addStory() {
-    deleteStoryMutation.mutate(story._id);
+    // deleteStoryMutation.mutate(story._id);
+    addStoryMutation.mutate();
     toast.success("Історія додається...", { duration: 1200 });
     return;
   }
 
   function removeStory() {
-    addStoryMutation.mutate(story._id);
+    // addStoryMutation.mutate(story._id);
+    deleteStoryMutation.mutate();
     toast.success("Історія видаляється...", { duration: 1200 });
     return;
   }
