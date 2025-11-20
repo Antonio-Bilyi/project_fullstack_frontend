@@ -37,6 +37,7 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
   const {
     data,
     isLoading,
+    isFetching,
     error,
     fetchNextPage,
     hasNextPage,
@@ -52,6 +53,8 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
       }
       return undefined;
     },
+    refetchOnMount: false,
+    staleTime: 5 * 60 * 1000,
   });
 
   const handleLoadMore = () => {
@@ -94,11 +97,11 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
             </div>
           </div>
 
-          {isLoading ? (
+          {isLoading || (isFetching && !isFetchingNextPage && !data?.pages) ? (
             <div className={css.loading}>Завантаження...</div>
           ) : error ? (
             <div className={css.error}>Помилка: {error instanceof Error ? error.message : 'Помилка завантаження'}</div>
-          ) : !data?.pages || data.pages.length === 0 ? (
+          ) : !data?.pages || data.pages.length === 0 || !data.pages[0]?.data || data.pages[0].data.stories?.length === 0 ? (
             <div className={css.noStories}>
               <p className={css.noStoriesText}>В цій категорії поки немає історій</p>
             </div>
