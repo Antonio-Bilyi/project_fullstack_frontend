@@ -2,22 +2,24 @@
 
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import {useQuery, useInfiniteQuery, DehydratedState} from '@tanstack/react-query';
-import { getStories, getCategories } from '@/lib/api/clientsApi/clientApi';
+import {useQuery, useInfiniteQuery, DehydratedState, HydrationBoundary} from '@tanstack/react-query';
+import { getCategories } from '@/lib/api/clientsApi/clientApi';
+import { getAllStories } from '@/lib/api/clientsApi/getAllStories';
 import TravellersStories from '@/components/TravellersStories/TravellersStories';
 import Container from '@/components/Container/Container';
-import { PaginatedStoriesResponse } from '@/types/story';
 import { Category } from '@/types/category';
+import { ApiResponse } from '@/types/api';
+import { StoriesHttpResponse } from '@/types/story';
 import css from './page.module.css';
 import Pagination from "@/components/Pagination/Pagination";
 
 interface StoriesClientProps {
-  initialStories: PaginatedStoriesResponse;
+  dehydratedState: DehydratedState;
   initialCategories: Category[];
   filterCategory?: string;
 }
 
-const StoriesClient = ({ initialStories, initialCategories, filterCategory = 'All' }: StoriesClientProps) => {
+const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'All' }: StoriesClientProps) => {
   const router = useRouter();
   const [currentCategory, setCurrentCategory] = useState(filterCategory);
 
@@ -40,29 +42,18 @@ const StoriesClient = ({ initialStories, initialCategories, filterCategory = 'Al
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ['stories', currentCategory],
-    queryFn: async ({ pageParam = 1 }) => {
-      const data = await getStories({
-        page: pageParam,
-        perPage: 12,
-        category: currentCategory === 'All' ? undefined : currentCategory,
-      });
-      return data;
-    },
-    getNextPageParam: (lastPage) => {
-      return lastPage.hasNextPage ? lastPage.page + 1 : undefined;
-    },
+    queryKey: ['stories', 12, currentCategory === 'All' ? 'ALL' : currentCategory],
+    queryFn: ({ pageParam }: { pageParam: number }) =>
+      getAllStories(pageParam, 12, currentCategory === 'All' ? 'ALL' : currentCategory),
     initialPageParam: 1,
-
-    ...(currentCategory === filterCategory && {
-      initialData: {
-        pages: [initialStories],
-        pageParams: [1],
-      },
-    }),
+    getNextPageParam: (lastPage: ApiResponse<StoriesHttpResponse>) => {
+      if (lastPage.data?.hasNextPage) {
+        return lastPage.data.page + 1;
+      }
+      return undefined;
+    },
   });
 
-  const stories = data?.pages.map((page) => page.data) ?? [];
   const handleLoadMore = () => {
     if (hasNextPage && !isFetchingNextPage) {
       fetchNextPage();
@@ -70,7 +61,6 @@ const StoriesClient = ({ initialStories, initialCategories, filterCategory = 'Al
   };
 
   const handleCategoryChange = (category: string) => {
-
     setCurrentCategory(category);
 
     const params = new URLSearchParams();
@@ -79,58 +69,59 @@ const StoriesClient = ({ initialStories, initialCategories, filterCategory = 'Al
   };
 
   return (
-    <Container>
-      <div className={css.page}>
-        <div className={css.header}>
-          <h1 className={css.title}>Історії мандрівників</h1>
+    <HydrationBoundary state={dehydratedState}>
+      <Container>
+        <div className={css.page}>
+          <div className={css.header}>
+            <h1 className={css.title}>Історії мандрівників</h1>
 
-          <div className={css.filterSection}>
-            <button
-              className={`${css.categoryButton} ${currentCategory === 'All' ? css.active : ''}`}
-              onClick={() => handleCategoryChange('All')}
-            >
-              Всі категорії
-            </button>
-            {categories.map((category) => (
+            <div className={css.filterSection}>
               <button
-                key={category._id}
-                className={`${css.categoryButton} ${currentCategory === category.name ? css.active : ''}`}
-                onClick={() => handleCategoryChange(category.name)}
+                className={`${css.categoryButton} ${currentCategory === 'All' ? css.active : ''}`}
+                onClick={() => handleCategoryChange('All')}
               >
-                {category.name}
+                Всі категорії
               </button>
-            ))}
+              {categories.map((category) => (
+                <button
+                  key={category._id}
+                  className={`${css.categoryButton} ${currentCategory === category.name ? css.active : ''}`}
+                  onClick={() => handleCategoryChange(category.name)}
+                >
+                  {category.name}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
-        {isLoading ? (
-          <div className={css.loading}>Завантаження...</div>
-        ) : error ? (
-          <div className={css.error}>Помилка: {error instanceof Error ? error.message : 'Помилка завантаження'}</div>
-        ) : stories.length === 0 ? (
-          <div className={css.noStories}>
-            <p className={css.noStoriesText}>В цій категорії поки немає історій</p>
-          </div>
-        ) : (
-          <>
+          {isLoading ? (
+            <div className={css.loading}>Завантаження...</div>
+          ) : error ? (
+            <div className={css.error}>Помилка: {error instanceof Error ? error.message : 'Помилка завантаження'}</div>
+          ) : !data?.pages || data.pages.length === 0 ? (
+            <div className={css.noStories}>
+              <p className={css.noStoriesText}>В цій категорії поки немає історій</p>
+            </div>
+          ) : (
+            <>
               <TravellersStories pages={data?.pages} />
 
               {isFetchingNextPage ? (
-                  <Pagination
-                      name={"Вже скоро..."}
-                      onClick={handleLoadMore}
-                  ></Pagination>
+                <Pagination
+                  name={"Вже скоро..."}
+                  onClick={handleLoadMore}
+                />
               ) : hasNextPage ? (
-                  <Pagination
-                      name={"Показати ще"}
-                      onClick={handleLoadMore}
-                  ></Pagination>
+                <Pagination
+                  name={"Показати ще"}
+                  onClick={handleLoadMore}
+                />
               ) : null}
-
-          </>
-        )}
-      </div>
-    </Container>
+            </>
+          )}
+        </div>
+      </Container>
+    </HydrationBoundary>
   );
 };
 

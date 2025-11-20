@@ -1,6 +1,6 @@
-import {dehydrate, HydrationBoundary, QueryClient} from "@tanstack/react-query";
+import {dehydrate, QueryClient} from "@tanstack/react-query";
 import StoriesClient from "@/app/(public routes)/stories/Stories.client";
-import {getCategoriesServer, getStoriesServer} from "@/lib/api/serverApi/serverApi";
+import {getCategoriesServer} from "@/lib/api/serverApi/serverApi";
 import {Metadata} from "next";
 import {getAllStoriesServer} from "@/lib/api/serverApi/getAllStories";
 
@@ -29,33 +29,25 @@ const StoriesPage = async ({ searchParams }: PageProps) => {
 
     const categories = await getCategoriesServer();
 
-    const initialStories = await getStoriesServer({
-        page: 1,
-        perPage: 12,
-        category: category === 'All' ? undefined : category,
-    });
-
     await queryClient.prefetchQuery({
         queryKey: ['categories'],
         queryFn: () => categories,
     });
 
     await queryClient.prefetchInfiniteQuery({
-        queryKey: ['stories', category],
-        queryFn: () => getAllStoriesServer(1, 3, "ALL", "favoriteCount", "desc"),
+        queryKey: ['stories', 12, category === 'All' ? 'ALL' : category],
+        queryFn: () => getAllStoriesServer(1, 12, category === 'All' ? 'ALL' : category),
         initialPageParam: 1,
     });
 
+    const dehydratedState = dehydrate(queryClient);
 
     return (
-        <HydrationBoundary state={dehydrate(queryClient)}>
-            <StoriesClient
-                initialStories={initialStories}
-                initialCategories={categories}
-                filterCategory={category}
-
-            />
-        </HydrationBoundary>
+        <StoriesClient
+            dehydratedState={dehydratedState}
+            initialCategories={categories}
+            filterCategory={category}
+        />
     );
 };
 
