@@ -116,7 +116,7 @@
 
 .storyDetailLink {
   display: flex;
-  background-color: 1px solid var(--color-scheme-2-border);
+  border: 1px solid var(--color-scheme-2-border);
   background-color: var(--opacity-neutral-darkest-5);
   border-radius: 8px;
   padding: 12px;
@@ -125,11 +125,12 @@
   width: 229px;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
 }
 
 .storyEditLink {
   display: flex;
-  background-color: 1px solid var(--color-scheme-2-border);
+  border: 1px solid var(--color-scheme-2-border);
   background-color: var(--opacity-neutral-darkest-5);
   height: 48px;
   width: 48px;
@@ -137,12 +138,37 @@
   border-radius: 8px;
   align-items: center;
   justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.storyEditLink.isFavourite {
+  border: 1px solid var(--color-royal-blue);
+  background-color: var(--color-royal-blue);
+  color: var(--color-white);
+  transition: all 0.3s ease;
+}
+
+.storyDetailLink:hover,
+.storyDetailLink:focus,
+.storyEditLink:hover,
+.storyEditLink:focus {
+  color: var(--color-white);
+  border: 1px solid var(--opacity-transparent);
+  background-color: var(--color-royal-blue);
+}
+
+.storyEditLink.isFavourite:hover,
+.storyEditLink.isFavourite:focus {
+  color: var(--foreground);
+  border: 1px solid var(--color-royal-blue);
+  background-color: var(--color-royal-blue-lighter);
 }
 
 /* для гумової верстки на малих екранах трохи зменшуємо паддінги */
 @media only screen and (min-width: 320px) and (max-width: 374px) {
   .storyDetailLink {
     border-radius: 12px 10px;
+    font-size: 15px;
   }
 
   .storyEditLink {
@@ -153,6 +179,19 @@
 @media only screen and (min-width: 768px) {
   .StoryItem {
     width: calc((100% - 24px) / 2);
+  }
+
+  .storyDetailLink:active,
+  .storyEditLink:active {
+    color: var(--color-white);
+    border: 1px solid var(--opacity-transparent);
+    background-color: var(--color-royal-blue);
+  }
+
+  .storyEditLink.isFavourite:active {
+    color: var(--foreground);
+    border: 1px solid var(--color-royal-blue);
+    background-color: var(--color-royal-blue-light);
   }
 }
 

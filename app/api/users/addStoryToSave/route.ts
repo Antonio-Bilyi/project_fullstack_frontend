@@ -15,6 +15,7 @@ export async function POST(request: NextRequest) {
         Cookie: cookieStore.toString(),
         'Content-Type': 'application/json',
       },
+       withCredentials: true,
     });
 
     return NextResponse.json(res.data, { status: res.status });
