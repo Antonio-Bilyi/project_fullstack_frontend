@@ -33,8 +33,16 @@ body {
 }
 
 body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   color: var(--foreground);
   background: var(--background);
+}
+
+main {
+  flex: 1;
 }
 
 h1 {

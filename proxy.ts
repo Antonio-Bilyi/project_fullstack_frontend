@@ -7,7 +7,7 @@ import { logErrorResponse } from './app/api/_utils/utils';
 const privateRoutes = ['/profile', '/stories/create', '/edit'];
 const authRoutes = ['/auth/login', '/auth/register'];
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const cookieStore = await cookies();
   const accessToken = cookieStore.get('accessToken')?.value;
@@ -52,6 +52,15 @@ export async function middleware(request: NextRequest) {
         }
       } catch (error) {
         logErrorResponse(error);
+
+        cookieStore.delete('accessToken');
+        cookieStore.delete('refreshToken');
+
+        if (isPrivateRoute) {
+          return NextResponse.redirect(new URL('/auth/login', request.url));
+        }
+
+        return NextResponse.next();
       }
     }
 

@@ -1,24 +1,21 @@
-import { NextRequest, NextResponse } from "next/server";
+import { NextResponse } from "next/server";
 import { cookies } from "next/headers";
-import { api } from "../api";
-import { logErrorResponse } from "../_utils/utils";
+import { api } from "../../api";
+import { logErrorResponse } from "../../_utils/utils";
 import { isAxiosError } from "axios";
 
-export async function GET(request: NextRequest) {
-  try {
-    const page = Number(request.nextUrl.searchParams.get('page') ?? 1);
-    const perPage = Number(request.nextUrl.searchParams.get('perPage') ?? 3);
-    const sortBy = request.nextUrl.searchParams.get('sortBy') ?? ' ';
-    const sortOrder = request.nextUrl.searchParams.get('sortOrder') ?? ' ';
-    const filter = request.nextUrl.searchParams.get('filter') ?? { category: 'all' };
+type Props = {
+  params: Promise<{ storyId: string }>;
+};
 
-    const res = await api('/stories', {
-      params: {
-        page,
-        perPage,
-        filter,
-        sortOrder,
-        sortBy
+export async function GET(request: Request, { params }: Props) {
+  try {
+    const cookieStore = await cookies();
+    const { storyId } = await params;
+
+    const res = await api.get(`/stories/${storyId}`, {
+      headers: {
+        Cookie: cookieStore.toString(),
       },
     });
 
@@ -36,12 +33,13 @@ export async function GET(request: NextRequest) {
   }
 }
 
-export async function POST(request: NextRequest) {
+export async function PATCH(request: Request, { params }: Props) {
   try {
     const cookieStore = await cookies();
+    const { storyId } = await params;
     const body = await request.json();
 
-    const res = await api.post("/stories", body, {
+    const res = await api.patch(`/stories/${storyId}`, body, {
       headers: {
         Cookie: cookieStore.toString(),
         "Content-Type": "application/json",
