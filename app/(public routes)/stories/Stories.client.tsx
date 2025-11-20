@@ -43,9 +43,9 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ['stories', 12, currentCategory === 'All' ? 'ALL' : currentCategory],
+    queryKey: ['stories', 12, currentCategory],
     queryFn: ({ pageParam }: { pageParam: number }) =>
-      getAllStories(pageParam, 12, currentCategory === 'All' ? 'ALL' : currentCategory),
+      getAllStories(pageParam, 12, currentCategory),
     initialPageParam: 1,
     getNextPageParam: (lastPage: ApiResponse<StoriesHttpResponse>) => {
       if (lastPage.data?.hasNextPage) {
@@ -101,7 +101,7 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
             <div className={css.loading}>Завантаження...</div>
           ) : error ? (
             <div className={css.error}>Помилка: {error instanceof Error ? error.message : 'Помилка завантаження'}</div>
-          ) : !data?.pages || data.pages.length === 0 || !data.pages[0]?.data || data.pages[0].data.stories?.length === 0 ? (
+          ) : !data?.pages || data.pages.length === 0 || !data.pages[0]?.data?.data || data.pages[0].data.data.length === 0 ? (
             <div className={css.noStories}>
               <p className={css.noStoriesText}>В цій категорії поки немає історій</p>
             </div>

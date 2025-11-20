@@ -35,8 +35,8 @@ const StoriesPage = async ({ searchParams }: PageProps) => {
     });
 
     await queryClient.prefetchInfiniteQuery({
-        queryKey: ['stories', 12, category === 'All' ? 'ALL' : category],
-        queryFn: () => getAllStoriesServer(1, 12, category === 'All' ? 'ALL' : category),
+        queryKey: ['stories', 12, category],
+        queryFn: () => getAllStoriesServer(1, 12, category),
         initialPageParam: 1,
     });
 
