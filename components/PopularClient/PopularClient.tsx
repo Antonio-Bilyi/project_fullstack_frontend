@@ -60,8 +60,6 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
     }
   }
 
-  console.log(data);
-
   return (
     <HydrationBoundary state={dehydratedState}>
       <Section>
