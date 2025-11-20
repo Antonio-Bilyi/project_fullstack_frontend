@@ -1,21 +1,21 @@
 import StoryDetails from "@/components/StoryDetails/StoryDetails";
 
-export default async function StoryPage({ params }) {
-  const { id } = params;
+import { Story } from "@/types/story";
 
-  const res = await fetch(`${process.env.API_URL}/stories/${id}`, {
-    cache: "no-store",
-  });
+interface Props {
+  params: { storyId: string };
+}
 
-  const story = await res.json();
+export default async function StoryPage({ params }: Props) {
+  let story: Story | null = null;
+
+  try {
+    story = await getStoryServer(params.storyId);
+  } catch (error) {
+    console.error("Ошибка при получении истории:", error);
+  }
+
+  if (!story) return <p>История не найдена</p>;
 
   return <StoryDetails story={story} />;
 }
-
-
-// import StoryDetails from "@/components/StoryDetails/StoryDetails";
-// import { storyMock } from "../[storyId]/storyMock.js";
-
-// export default function StoryPage() {
-//   return <StoryDetails story={storyMock} />;
-// }
