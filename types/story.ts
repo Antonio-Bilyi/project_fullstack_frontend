@@ -43,5 +43,7 @@ export interface httpResponse<T> {
     hasPreviousPage: boolean;
 }
 
-
+export interface StoryRequest {
+  storyId: string; 
+}
 

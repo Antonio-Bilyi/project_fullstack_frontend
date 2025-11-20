@@ -44,6 +44,7 @@ export default function TravellersStoriesItem({
     const updateStates = () => {
       if (!isAuthenticated || !user) return;
       if (ownerId === user._id) setIsOwner(true);
+      if (!user.favouriteArticles) return;
       setIsFavourite(user.favouriteArticles.includes(story._id));
     };
 
