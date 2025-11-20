@@ -1,0 +1,50 @@
+.wrapper {
+  padding: 3rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.link {
+  padding: 0.5rem 1rem;
+  color: #007bff;
+  text-decoration: underline;
+  display: inline-block;
+}
+
+.errorDetails {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  color: #dc3545;
+}
+
+.errorPre {
+  margin-top: 0.5rem;
+  white-space: pre-wrap;
+  overflow: auto;
+}
+
+.buttonGroup {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.retryButton {
+  padding: 0.5rem 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
