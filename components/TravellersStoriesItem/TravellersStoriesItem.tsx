@@ -14,7 +14,7 @@ import toast, { Toaster } from "react-hot-toast";
 
 //стилі
 import css from "./TravellersStoriesItem.module.css";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 // пропси
 interface TravellersStoriesItemProps {
@@ -33,23 +33,23 @@ export default function TravellersStoriesItem({
 
   const user = useUserAuthStore((state) => state.user);
   const isAuthenticated = useUserAuthStore((state) => state.isAuthenticated);
+  const updUserFavArticles = useUserAuthStore(
+    (state) => state.updateFavouriteArticles
+  );
 
   const [isOwner, setIsOwner] = useState(false);
   const [isFavourite, setIsFavourite] = useState(false);
-  // const [favoriteCount, setFavouriteCount] = useState(story.favoriteCount);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [favoriteCount, setfavoriteCount] = useState(story.favoriteCount);
 
   const router = useRouter();
-  const queryClient = useQueryClient();
 
   useEffect(() => {
     const updateStates = () => {
       if (!isAuthenticated || !user) return;
       if (ownerId === user._id) setIsOwner(true);
-      // setIsFavourite(user.favouriteArticles.includes(story._id));
-      setIsFavourite(Array.isArray(user.favouriteArticles) && user.favouriteArticles.includes(story._id));
-      
-
+      if (!user.favouriteArticles) return;
+      setIsFavourite(user.favouriteArticles.includes(story._id));
     };
 
     updateStates();
@@ -57,9 +57,14 @@ export default function TravellersStoriesItem({
 
   // видалення історії з улюблених
   const deleteStoryMutation = useMutation({
-    mutationFn: () => removeStoryFromSave(story._id),
-    onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["stories"] });
+    mutationFn: async () => {
+      const res = await removeStoryFromSave(story._id);
+      return res.data;
+    },
+    onSuccess(data) {
+      if (data?.user?.favouriteArticles)
+        updUserFavArticles(data?.user?.favouriteArticles);
+      if (data?.story) setfavoriteCount(data.story.favoriteCount);
     },
     onError: (error) => {
       toast.error(error.message);
@@ -69,9 +74,14 @@ export default function TravellersStoriesItem({
   // додавання історії до улюблених
   const addStoryMutation = useMutation({
     // mutationKey: 'addStory',
-    mutationFn: () => addStoryToSave(story._id),
-    onSuccess() {
-      queryClient.invalidateQueries({ queryKey: ["stories"] });
+    mutationFn: async () => {
+      const res = await addStoryToSave(story._id);
+      return res.data;
+    },
+    onSuccess(data) {
+      if (data?.user?.favouriteArticles)
+        updUserFavArticles(data?.user?.favouriteArticles);
+      if (data?.story) setfavoriteCount(data.story.favoriteCount);
     },
     onError: (error) => {
       toast.error(error.message);
@@ -99,16 +109,14 @@ export default function TravellersStoriesItem({
 
   // додати історію
   function addStory() {
-    // deleteStoryMutation.mutate(story._id);
-    addStoryMutation.mutate();
     toast.success("Історія додається...", { duration: 1200 });
+    addStoryMutation.mutate(story._id);
     return;
   }
 
   function removeStory() {
-    // addStoryMutation.mutate(story._id);
-    deleteStoryMutation.mutate();
     toast.success("Історія видаляється...", { duration: 1200 });
+    deleteStoryMutation.mutate(story._id);
     return;
   }
 
@@ -170,7 +178,7 @@ export default function TravellersStoriesItem({
               <div className={css.favWrapper}>
                 <p className={css.storyDate}>{dateStory}</p>
                 <p className={css.storyFavCnt}>
-                  {story.favoriteCount}
+                  {favoriteCount}
                   {/* {story.favoriteCount} */}
                   <svg className={css.storySaveSvg} width="16" height="16">
                     <use href="/svg-sprite.svg#icon-bookmark"></use>

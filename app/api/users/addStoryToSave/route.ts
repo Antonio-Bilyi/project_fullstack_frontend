@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
 
     const body = await request.json();
 
-    const res = await api.post('/users/addStoryToDownloads', body, {
+    const res = await api.post('/users/addStoryToSave', body, {
       headers: {
         Cookie: cookieStore.toString(),
         'Content-Type': 'application/json',
