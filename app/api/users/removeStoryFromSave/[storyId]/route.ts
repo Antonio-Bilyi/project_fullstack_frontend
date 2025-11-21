@@ -16,18 +16,13 @@ export async function DELETE(request: NextRequest, { params }: Props) {
     const cookie_string = cookieStore.toString();
     const {storyId} = await params;
 
-    console.log(cookie_string);
-
     const res = await api.delete('/users/removeStoryFromSave', {
       headers: {
         Cookie: cookie_string,
         'Content-Type': 'application/json',
       },
-      data: { storyId
-    }
+      data: { storyId }
     });
-
-    console.log('delete end');
     
     return NextResponse.json(res.data, { status: res.status });
   } catch (error) {

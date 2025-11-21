@@ -9,12 +9,8 @@ import { nextServer } from "@/lib/api/api";
 // Додати історію в збережені 
 export const removeStoryFromSave = async (storyId: string): Promise<ApiResponse<StoryFavHttpResponse>> => {
     const endPoint = `/users/removeStoryFromSave/${storyId}`;
-    
-    console.log('/users/removeStoryFromSave - START');
    
     const response = await nextServer.delete<ApiResponse<StoryFavHttpResponse>, AxiosRequestConfig<StoryRequest>>(endPoint);
-
-    console.log('/users/removeStoryFromSave - END');
     
     return response.data;
 }

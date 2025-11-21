@@ -78,10 +78,6 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
               onClick={handleLoadMore}
             ></Pagination>
           ) : null}
-
-          {/* <button className={css.btnLoadMore} onClick={handleLoadMore}>
-            Переглянути ще
-          </button> */}
         </Container>
       </Section>
     </HydrationBoundary>

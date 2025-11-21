@@ -181,6 +181,10 @@
     width: calc((100% - 24px) / 2);
   }
 
+  .storyImg {
+    height: 227px;
+  }
+
   .storyDetailLink:active,
   .storyEditLink:active {
     color: var(--color-white);
@@ -199,6 +203,10 @@
 @media only screen and (min-width: 1440px) {
   .StoryItem {
     width: calc((100% - 2 * 24px) / 3);
+  }
+
+  .storyImg {
+    height: 281px;
   }
 
   .category {
