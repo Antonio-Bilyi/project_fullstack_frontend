@@ -39,14 +39,11 @@
 // }
 import { NextRequest, NextResponse } from "next/server";
 
-interface RouteContext {
-  params: {
-    userId: string;
-  };
+interface RouteParams {
+  userId: string;
 }
-
-export async function GET(request: NextRequest, context: RouteContext) {
-  const { userId } = context.params;
+export async function GET(request: NextRequest, context: {params: Promise<RouteParams>}) {
+  const { userId } = await context.params;
 
   const { searchParams } = new URL(request.url);
   const storiesType = searchParams.get("storiesType") ?? "own";
