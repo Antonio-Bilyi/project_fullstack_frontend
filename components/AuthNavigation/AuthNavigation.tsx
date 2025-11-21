@@ -25,7 +25,7 @@ export default function AuthNavigation({
     try {
       await logout();
       clearIsAuthenticated();
-      router.push("/");
+      router.push("/auth/login");
       if (onClose) onClose();
     } catch (err) {
       console.error("Logout failed:", err);
@@ -60,7 +60,7 @@ export default function AuthNavigation({
 
   return (
     <li
-      className={`${css.navItem} ${css.authUser} ${isMobile ? css.authUserMobile : ""}`}
+      className={`${css.navItem} ${css.authUser} ${isMobile ? css.authUserMobile : ""} ${!isMobile && isHome ? css.authUserHome : ""}`}
     >
       {/* Имя + аватар */}
       <div className={`${css.userInfo} ${isMobile ? css.userInfoMobile : ""}`}>

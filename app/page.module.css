@@ -1,5 +1,7 @@
 .title {
   margin-bottom: 24px;
+  display: block;
+  margin: 0 auto;
 }
 
 .wrapper {

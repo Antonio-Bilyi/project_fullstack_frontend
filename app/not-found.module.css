@@ -1,0 +1,21 @@
+.wrapper {
+  text-align: center;
+  padding: 3rem 0;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.description {
+  margin-bottom: 1.5rem;
+  color: #666;
+}
+
+.link {
+  padding: 0.5rem 1.5rem;
+  color: #007bff;
+  text-decoration: underline;
+  display: inline-block;
+}
