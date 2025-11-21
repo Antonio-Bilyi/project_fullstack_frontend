@@ -7,6 +7,7 @@ import { getCategories } from '@/lib/api/clientsApi/clientApi';
 import { getAllStories } from '@/lib/api/clientsApi/getAllStories';
 import TravellersStories from '@/components/TravellersStories/TravellersStories';
 import Container from '@/components/Container/Container';
+import Section from '@/components/Section/Section';
 import { Category } from '@/types/category';
 import { ApiResponse } from '@/types/api';
 import { StoriesHttpResponse } from '@/types/story';
@@ -19,13 +20,30 @@ interface StoriesClientProps {
   filterCategory?: string;
 }
 
-const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'All' }: StoriesClientProps) => {
+const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'ALL' }: StoriesClientProps) => {
   const router = useRouter();
   const [currentCategory, setCurrentCategory] = useState(filterCategory);
+  const [perPage, setPerPage] = useState(9);
 
   useEffect(() => {
     setCurrentCategory(filterCategory);
   }, [filterCategory]);
+
+  useEffect(() => {
+    const updatePerPage = () => {
+      const windowWidth = window.innerWidth;
+
+      if (windowWidth < 768) setPerPage(8); // mobile
+      else if (windowWidth < 1440) setPerPage(8); // tablet
+      else setPerPage(9); // desktop
+    };
+
+    updatePerPage();
+
+    window.addEventListener("resize", updatePerPage);
+
+    return () => window.removeEventListener("resize", updatePerPage);
+  }, []);
 
   const { data: categories = initialCategories } = useQuery({
     queryKey: ['categories'],
@@ -43,9 +61,9 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
     hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery({
-    queryKey: ['stories', 12, currentCategory],
+    queryKey: ['stories', perPage, currentCategory],
     queryFn: ({ pageParam }: { pageParam: number }) =>
-      getAllStories(pageParam, 12, currentCategory),
+      getAllStories(pageParam, perPage, currentCategory),
     initialPageParam: 1,
     getNextPageParam: (lastPage: ApiResponse<StoriesHttpResponse>) => {
       if (lastPage.data?.hasNextPage) {
@@ -73,57 +91,59 @@ const StoriesClient = ({ dehydratedState, initialCategories, filterCategory = 'A
 
   return (
     <HydrationBoundary state={dehydratedState}>
-      <Container>
-        <div className={css.page}>
-          <div className={css.header}>
-            <h1 className={css.title}>Історії мандрівників</h1>
+      <Section>
+        <Container>
+          <div className={css.page}>
+            <div className={css.header}>
+              <h1 className={css.title}>Історії мандрівників</h1>
 
-            <div className={css.filterSection}>
-              <button
-                className={`${css.categoryButton} ${currentCategory === 'All' ? css.active : ''}`}
-                onClick={() => handleCategoryChange('All')}
-              >
-                Всі категорії
-              </button>
-              {categories.map((category) => (
+              <div className={css.filterSection}>
                 <button
-                  key={category._id}
-                  className={`${css.categoryButton} ${currentCategory === category.name ? css.active : ''}`}
-                  onClick={() => handleCategoryChange(category.name)}
+                  className={`${css.categoryButton} ${currentCategory === 'ALL' ? css.active : ''}`}
+                  onClick={() => handleCategoryChange('ALL')}
                 >
-                  {category.name}
+                  Всі категорії
                 </button>
-              ))}
+                {categories.map((category) => (
+                  <button
+                    key={category._id}
+                    className={`${css.categoryButton} ${currentCategory === category.name ? css.active : ''}`}
+                    onClick={() => handleCategoryChange(category.name)}
+                  >
+                    {category.name}
+                  </button>
+                ))}
+              </div>
             </div>
+
+            {isLoading || (isFetching && !isFetchingNextPage && !data?.pages) ? (
+              <div className={css.loading}>Завантаження...</div>
+            ) : error ? (
+              <div className={css.error}>Помилка: {error instanceof Error ? error.message : 'Помилка завантаження'}</div>
+            ) : !data?.pages || data.pages.length === 0 || !data.pages[0]?.data?.data || data.pages[0].data.data.length === 0 ? (
+              <div className={css.noStories}>
+                <p className={css.noStoriesText}>В цій категорії поки немає історій</p>
+              </div>
+            ) : (
+              <>
+                <TravellersStories pages={data?.pages} />
+
+                {isFetchingNextPage ? (
+                  <Pagination
+                    name={"Вже скоро..."}
+                    onClick={handleLoadMore}
+                  />
+                ) : hasNextPage ? (
+                  <Pagination
+                    name={"Показати ще"}
+                    onClick={handleLoadMore}
+                  />
+                ) : null}
+              </>
+            )}
           </div>
-
-          {isLoading || (isFetching && !isFetchingNextPage && !data?.pages) ? (
-            <div className={css.loading}>Завантаження...</div>
-          ) : error ? (
-            <div className={css.error}>Помилка: {error instanceof Error ? error.message : 'Помилка завантаження'}</div>
-          ) : !data?.pages || data.pages.length === 0 || !data.pages[0]?.data?.data || data.pages[0].data.data.length === 0 ? (
-            <div className={css.noStories}>
-              <p className={css.noStoriesText}>В цій категорії поки немає історій</p>
-            </div>
-          ) : (
-            <>
-              <TravellersStories pages={data?.pages} />
-
-              {isFetchingNextPage ? (
-                <Pagination
-                  name={"Вже скоро..."}
-                  onClick={handleLoadMore}
-                />
-              ) : hasNextPage ? (
-                <Pagination
-                  name={"Показати ще"}
-                  onClick={handleLoadMore}
-                />
-              ) : null}
-            </>
-          )}
-        </div>
-      </Container>
+        </Container>
+      </Section>
     </HydrationBoundary>
   );
 };

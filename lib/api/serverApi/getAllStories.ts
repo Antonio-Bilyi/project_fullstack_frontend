@@ -7,21 +7,12 @@ import { cookies } from "next/headers";
 export const getAllStoriesServer = async (page: number, perPage: number, category?: string, sortOrder?: string, sortBy?: string): Promise<ApiResponse<StoriesHttpResponse>> => {
     const endPoint = '/stories';
 
-    const params: Record<string, string | number> = {
+    const params = {
         page,
         perPage,
-    };
-
-    if (category && category !== 'ALL' && category !== 'All') {
-        params.category = category;
-    }
-
-    if (sortOrder) {
-        params.sortOrder = sortOrder;
-    }
-
-    if (sortBy) {
-        params.sortBy = sortBy;
+        filter: category ? { category } : { category: 'ALL' },
+        sortOrder: sortOrder ? sortOrder : '',
+        sortBy: sortBy ? sortBy : '',
     }
 
     const cookiesCurrent = await cookies();

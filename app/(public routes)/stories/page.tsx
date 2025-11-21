@@ -9,22 +9,22 @@ interface PageProps {
 }
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
     const params = await searchParams;
-    const category = params.category || 'All';
+    const category = params.category || 'ALL';
 
     return {
         title: 'Історії мандрівників',
-        description: `Дослідіть історії мандрівників${category !== 'All' ? ` в категорії ${category}` : ''}`,
+        description: `Дослідіть історії мандрівників${category !== 'ALL' ? ` в категорії ${category}` : ''}`,
         openGraph: {
             title: 'Історії мандрівників',
-            description: `Дослідіть історії мандрівників${category !== 'All' ? ` в категорії ${category}` : ''}`,
-            url: `https://your-domain.com/stories${category !== 'All' ? `?category=${category}` : ''}`,
+            description: `Дослідіть історії мандрівників${category !== 'ALL' ? ` в категорії ${category}` : ''}`,
+            url: `https://your-domain.com/stories${category !== 'ALL' ? `?category=${category}` : ''}`,
         },
     };
 }
 
 const StoriesPage = async ({ searchParams }: PageProps) => {
     const params = await searchParams;
-    const category = params.category || 'All';
+    const category = params.category || 'ALL';
     const queryClient = new QueryClient();
 
     const categories = await getCategoriesServer();
@@ -35,8 +35,8 @@ const StoriesPage = async ({ searchParams }: PageProps) => {
     });
 
     await queryClient.prefetchInfiniteQuery({
-        queryKey: ['stories', 12, category],
-        queryFn: () => getAllStoriesServer(1, 12, category),
+        queryKey: ['stories', 9, category],
+        queryFn: () => getAllStoriesServer(1, 9, category),
         initialPageParam: 1,
     });
 
