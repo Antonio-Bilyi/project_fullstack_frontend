@@ -1,6 +1,4 @@
 {
-  "buildCommand": "npm run build",
-  "typescript": {
-    "ignoreBuildErrors": false
-  }
+  "buildCommand": "npm run build"
+
 }
