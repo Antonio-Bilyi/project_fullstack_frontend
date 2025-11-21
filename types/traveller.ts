@@ -5,9 +5,20 @@ export type Traveler = {
   name: string;
   avatarUrl: string;
   description: string;
+  favouriteArticles?: [string];
+  articlesAmount?: number;
 };
 
-export type Traveller = Traveler;
+
+export interface TravelersResponse {
+  data: Traveler[];
+  page: number;
+  perPage: number;
+  totalItems: number;
+  totalPages: number;
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+}
 
 export interface TravelerStoriesHttpResponse {
   user: Traveler;

@@ -13,7 +13,7 @@ export default function TravellerInfoCard({
     <div className={css.card}>
       <div className={css.imageWrapper}>
         <Image
-          src={avatarUrl}
+          src={avatarUrl ? avatarUrl : "/avatar/defaultAvatar.webp"}
           alt={name}
           className={css.avatar}
           width={112}

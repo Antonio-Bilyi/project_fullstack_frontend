@@ -3,3 +3,9 @@
   display: block;
   margin: 0 auto;
 }
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}

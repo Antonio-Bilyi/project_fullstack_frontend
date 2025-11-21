@@ -1,21 +1,24 @@
 import { cookies } from "next/headers";
 import { nextServer } from '@/lib/api/api';
-import type {TravelersResponse, TravelersList} from "@/types/user";
+import type { TravelersResponse } from "@/types/traveller";
+import { ApiResponse } from "@/types/api";
 
-export const getAllTravelers = async (): Promise<TravelersList| null> => {
+export const getAllTravelers = async (page: number, perPage: number): Promise<ApiResponse<TravelersResponse>> => {
     const cookiesCurrent = await cookies();
   try {
     
-    const response = await nextServer.get<TravelersResponse>("/users", {
+    const response = await nextServer.get<ApiResponse<TravelersResponse>>("/users", {
       params: {
-        page: 1,
-        }, 
+        page,
+        perPage,
+      }, 
+      headers: { Cookie: cookiesCurrent.toString(), }
     });
 
-    return response.data.data;
+    return response.data;
   } catch (error) {
     console.error("Error fetching travelers:", error);
-    return null;
+    return {};
   }
 };
 
