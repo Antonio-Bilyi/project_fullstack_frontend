@@ -26,8 +26,10 @@ export default function TravellersStoriesItem({
   story,
 }: TravellersStoriesItemProps) {
   // стани
-  const ownerId =
-    typeof story.category !== "string" ? story.ownerId._id : story.ownerId;
+  // const ownerId =
+  //   typeof story.category !== "string" ? story.ownerId._id : story.ownerId;
+    const ownerId =
+    typeof story.ownerId === "string" ? story.ownerId : story.ownerId._id;
 
   const user = useUserAuthStore((state) => state.user);
   const isAuthenticated = useUserAuthStore((state) => state.isAuthenticated);
