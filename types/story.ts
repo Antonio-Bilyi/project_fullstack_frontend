@@ -47,3 +47,21 @@ export interface StoryRequest {
   storyId: string; 
 }
 
+
+
+export interface PaginatedStoriesResponse {
+    data: Story[];
+    page: number;
+    perPage: number;
+    totalItems: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPreviousPage: boolean;
+}
+
+export interface GetStoriesParams {
+    page?: number;
+    perPage?: number;
+    category?: string;
+}
+
