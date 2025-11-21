@@ -1,14 +1,10 @@
 .block {
     padding: 20px;
     background-color: #e8eeff;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
-    flex-direction: column;
-    gap: 32px;
     border-radius: 24px;
-    height: 170px;
-    max-width: 768px;
+    min-height: 170px;
+    max-height: 195px;
+    max-width: 335px;
 }
 
 
@@ -19,6 +15,7 @@
     line-height: 1.4;
     letter-spacing: -0.01em;
     color: #000;
+    margin-bottom: 32px;
 }
 
 .button {
@@ -33,6 +30,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 48px;
+    width: 295px;
 }
 
 .button:hover,  .button:focus{
@@ -48,11 +47,29 @@
 @media only screen and (min-width: 768px) {
     .block {
         padding: 40px 32px;
+        max-height: 210px;
+        max-width: 533px;
+    }
+
+    .button {
+        min-width: 101px;
+        max-width: 186px;
     }
 }
 
 @media only screen and (min-width: 1440px) { 
     .message {
         font-size: 26px;
+    }
+
+    .block{
+        min-height: 232px;
+        max-height: 268px;
+        width: 533px;
+    }
+
+    .button {
+        width: 250px;
+        max-width: none;
     }
 }
