@@ -18,17 +18,28 @@ import Pagination from "../Pagination/Pagination";
 import TravellersStories from "@/components/TravellersStories/TravellersStories";
 
 interface PopularClientProps {
-  dehydratedState: DehydratedState;
+  dehydratedState?: DehydratedState;
+  mobPerPage: number;
+  // tabPerPage: number;
+  // deskPerPage: number;
+  paginationShow: boolean;
 }
 
-export default function PopularClient({ dehydratedState }: PopularClientProps) {
-  const [perPage, setPerPage] = useState(3);
+export default function PopularClient({
+  dehydratedState,
+  mobPerPage,
+  // tabPerPage,
+  // deskPerPage,
+  paginationShow,
+}: PopularClientProps) {
+  const [perPage, setPerPage] = useState(mobPerPage);
+  const [isPagination, setIsPagination] = useState(paginationShow);
 
   useEffect(() => {
     const updatePerPage = () => {
       const windowWidth = window.innerWidth;
 
-      if (windowWidth < 768) setPerPage(3);
+      if (windowWidth < 768) setPerPage(mobPerPage);
       else if (windowWidth < 1440) setPerPage(4);
       else setPerPage(3);
     };
@@ -38,7 +49,15 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
     window.addEventListener("resize", updatePerPage);
 
     return () => window.removeEventListener("resize", updatePerPage);
-  }, []);
+  }, [mobPerPage]);
+
+  useEffect(() => {
+    const updatePagination = () => {
+      setIsPagination(paginationShow);
+    };
+
+    updatePagination();
+  }, [paginationShow]);
 
   const { data, hasNextPage, isFetchingNextPage, fetchNextPage } =
     useInfiniteQuery({
@@ -67,7 +86,7 @@ export default function PopularClient({ dehydratedState }: PopularClientProps) {
           <h2 className={css.title}>Популярні історії</h2>
           <TravellersStories pages={data?.pages} />
 
-          {isFetchingNextPage ? (
+          {isPagination && isFetchingNextPage ? (
             <Pagination
               name={"Вже скоро..."}
               onClick={handleLoadMore}

@@ -8,8 +8,10 @@
   --color-royal-blue: #4169e1;
   --color-white: #fff;
   --opacity-neutral-darkest-15: rgba(0, 0, 0, 0.15);
+  --color-neutral-lightest: #f2f2f2;
   --opacity-neutral-darkest-5: rgba(0, 0, 0, 0.05);
   --color-scheme-1-border: var(--opacity-neutral-darkest-15);
+  --color-scheme-1-foreground: var(--color-neutral-lightest);
   --color-scheme-2-foreground: var(--color-royal-blue-lighter);
   --color-scheme-2-border: var(--opacity-neutral-darkest-15);
   --opacity-transparent: rgba(255, 255, 255, 0);
