@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { nextServer } from '../api';
 import type { AxiosResponse } from "axios";
 import type { Story } from '@/types/story';
+import {Category} from "@/types/category";
 
 interface ApiResponse<T> {
   status?: number;
@@ -68,4 +69,9 @@ export const getServerStory = async (storyId: string): Promise<Story> => {
 
     throw error;
   }
+};
+
+export const getCategoriesServer = async (): Promise<Category[]> => {
+    const res = await nextServer.get<{ data: Category[] }>('/categories');
+    return res.data.data;
 };
