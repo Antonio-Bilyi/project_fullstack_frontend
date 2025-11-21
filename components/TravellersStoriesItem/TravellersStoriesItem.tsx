@@ -57,8 +57,8 @@ export default function TravellersStoriesItem({
 
   // видалення історії з улюблених
   const deleteStoryMutation = useMutation({
-    mutationFn: async () => {
-      const res = await removeStoryFromSave(story._id);
+    mutationFn: async (id: string) => {
+      const res = await removeStoryFromSave(id);
       return res.data;
     },
     onSuccess(data) {
@@ -74,8 +74,8 @@ export default function TravellersStoriesItem({
   // додавання історії до улюблених
   const addStoryMutation = useMutation({
     // mutationKey: 'addStory',
-    mutationFn: async () => {
-      const res = await addStoryToSave(story._id);
+    mutationFn: async (id: string) => {
+      const res = await addStoryToSave(id);
       return res.data;
     },
     onSuccess(data) {

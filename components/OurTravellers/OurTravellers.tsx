@@ -9,7 +9,7 @@ export default async function OurTravellers() {
   return (
     <Section>
       <Container>
-        <OurTravellersClient travelers={travelers?.data?.data} />
+        <OurTravellersClient travelers={travelers?.data?.data || []} />
       </Container>
     </Section>
   );

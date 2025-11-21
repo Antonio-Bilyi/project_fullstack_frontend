@@ -40,13 +40,13 @@
 import { NextRequest, NextResponse } from "next/server";
 
 interface RouteContext {
-  params: {
+  params: Promise<{
     userId: string;
-  };
+  }>;
 }
 
 export async function GET(request: NextRequest, context: RouteContext) {
-  const { userId } = context.params;
+  const { userId } = await context.params;
 
   const { searchParams } = new URL(request.url);
   const storiesType = searchParams.get("storiesType") ?? "own";
