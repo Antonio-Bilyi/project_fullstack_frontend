@@ -10,7 +10,7 @@ export const getAllStoriesServer = async (page: number, perPage: number, categor
     const params = {
         page,
         perPage,
-        filter: category ? { category } : { category: 'all' },
+        filter: category ? { category } : { category: 'ALL' },
         sortOrder: sortOrder ? sortOrder : '',
         sortBy: sortBy ? sortBy : '',
     }

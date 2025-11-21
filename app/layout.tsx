@@ -24,6 +24,13 @@ const sora = Sora({
 export const metadata: Metadata = {
   title: "Подорожники",
   description: "Проєкт, створений для тих, хто живе подорожами",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon-32x32.png", type: "image/png" },
+    ],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     title: "Подорожники",
     description:
@@ -43,10 +50,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-  modal,
+  // modal,
 }: Readonly<{
   children: React.ReactNode;
-  modal: React.ReactNode;
+  // modal: React.ReactNode;
 }>) {
   return (
     <html lang="ua">
@@ -56,7 +63,7 @@ export default function RootLayout({
             <Header />
             <main>
               {children}
-              {modal}
+              {/* {modal} */}
             </main>
             <Footer />
           </AuthProvider>

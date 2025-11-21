@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation";
 import { useUserAuthStore } from "@/lib/store/authStore";
 import { logout } from "@/lib/api/clientsApi/clientApi";
 import Image from "next/image";
+import { useEffect } from "react";
+import { getUserProfile } from "@/lib/api/clientsApi/getUserProfile";
 
 type AuthNavigationProps = {
   isHome?: boolean;
@@ -19,7 +21,20 @@ export default function AuthNavigation({
   isMobile = false,
 }: AuthNavigationProps) {
   const router = useRouter();
-  const { isAuthenticated, user, clearIsAuthenticated } = useUserAuthStore();
+  const { isAuthenticated, user, restoreUser, clearIsAuthenticated } =
+    useUserAuthStore();
+
+  useEffect(() => {
+    if (!user) {
+      getUserProfile()
+        .then((user) => {
+          restoreUser(user);
+        })
+        .catch(() => {
+          clearIsAuthenticated();
+        });
+    }
+  }, [user, restoreUser, clearIsAuthenticated]);
 
   const handleLogout = async () => {
     try {
