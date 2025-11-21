@@ -73,20 +73,25 @@ export default function Profile() {
   useEffect(() => {
     async function init() {
       try {
+        setIsLoading(true);
         const userData = await getUserProfile();
         if (!userData) {
           toast.error("Не вдалося отримати дані користувача");
-          return;
+          setUser(null);
         }
         setUser(userData);
         setPage(1);
         await fetchStories(1, true);
       } catch {
         toast.error("Помилка отримання користувача");
+      } finally {
+        setIsLoading(false);
       }
     }
     init();
   }, [activeTab, perPage]);
+
+  if (isLoading) return <p className={styles.noUser}>Завантаження...</p>;
 
   if (!user) return <p className={styles.noUser}>Немає даних користувача</p>;
 
@@ -96,7 +101,7 @@ export default function Profile() {
         <section className={styles.infoSection}>
           <TravellerInfo user={user} />
         </section>
-
+        
         <section className={styles.storiesSection}>
           <div className={styles.tabs}>
             <button
