@@ -3,7 +3,6 @@
 }
 
 .tabs {
-    margin-top: 32px;
     margin-bottom: 40px;
     display: flex;
     flex-direction: row;
@@ -33,6 +32,15 @@
     transition: background-color, border, font-weight 0.3s ease;
 }
 
+.infoSection {
+    margin-top: 72px;
+    margin-bottom: 32px;
+}
+
+.storiesSection {
+    margin-bottom: 64px;
+}
+
 .tabButton.active {
     font-weight: 500;
     border: 1px solid rgba(0, 0, 0, 0.15);
@@ -46,5 +54,11 @@
 
     .tabButton {
         width: 207px;
+    }
+}
+
+@media only screen and (min-width: 1440px) {
+    .infoSection {
+        margin-bottom: 48px;
     }
 }
