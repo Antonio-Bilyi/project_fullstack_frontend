@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     url: "", //тут має бути посилання на задеплоєний проект
     images: [
       {
-        url: "https://ac.goit.global/fullstack/react/og-meta.jpg", //замінити картинку на картинку з макету
+        url: "https://project-fullstack-frontend-p3mv.vercel.app/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Подорожники",
