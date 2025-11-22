@@ -17,6 +17,10 @@
   background-repeat: no-repeat;
 }
 
+.section.storyDetailSection {
+  padding: 104px 0 32px;
+}
+
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .hero {
@@ -29,22 +33,26 @@
       url("/hero/tab2x.webp") 2x
     );
   }
-}
 
-/* Styles for Desktop devices */
-@media only screen and (min-width: 1440px) {
-  .section {
-    padding: 72px 0;
-  }
+  /* Styles for Desktop devices */
+  @media only screen and (min-width: 1440px) {
+    .section {
+      padding: 72px 0;
+    }
 
-  .hero {
-    padding: 244px 0 347px;
-  }
+    .hero {
+      padding: 244px 0 347px;
+    }
 
-  .background {
-    background-image: image-set(
-      url("/hero/desk1x.webp") 1x,
-      url("/hero/desk2x.webp") 2x
-    );
+    .background {
+      background-image: image-set(
+        url("/hero/desk1x.webp") 1x,
+        url("/hero/desk2x.webp") 2x
+      );
+    }
+
+    .section.storyDetailSection {
+      padding: 120px 0 48px;
+    }
   }
 }
