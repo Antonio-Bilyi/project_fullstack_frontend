@@ -68,8 +68,7 @@ export default function StoryDetailsClient() {
 
   // додавання історії до улюблених
   const addStoryMutation = useMutation({
-    // mutationKey: 'addStory',
-    mutationFn: async () => {
+    mutationFn: async (storyId: string) => {
       const res = await addStoryToSave(storyId);
       return res.data;
     },
@@ -102,7 +101,7 @@ export default function StoryDetailsClient() {
   }
 
   // додати історію
-  function addStory() {
+  function addStory(storyId: string) {
     toast.success("Історія додається...", { duration: 1200 });
     addStoryMutation.mutate(storyId);
     return;
@@ -110,7 +109,7 @@ export default function StoryDetailsClient() {
 
   function removeStory() {
     toast.success("Історія видаляється...", { duration: 1200 });
-    deleteStoryMutation.mutate(storyId);
+    deleteStoryMutation.mutate();
     return;
   }
 
@@ -123,7 +122,7 @@ export default function StoryDetailsClient() {
     if (isFavourite) {
       removeStory();
     } else {
-      addStory();
+      addStory(storyId);
     }
     return;
   }
