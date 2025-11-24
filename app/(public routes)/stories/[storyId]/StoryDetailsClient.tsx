@@ -53,7 +53,7 @@ export default function StoryDetailsClient() {
 
   // видалення історії з улюблених
   const deleteStoryMutation = useMutation({
-    mutationFn: async () => {
+    mutationFn: async (storyId: string) => {
       const res = await removeStoryFromSave(storyId);
       return res.data;
     },
@@ -69,7 +69,7 @@ export default function StoryDetailsClient() {
   // додавання історії до улюблених
   const addStoryMutation = useMutation({
     // mutationKey: 'addStory',
-    mutationFn: async () => {
+    mutationFn: async (storyId: string) => {
       const res = await addStoryToSave(storyId);
       return res.data;
     },

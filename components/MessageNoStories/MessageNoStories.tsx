@@ -18,7 +18,7 @@ const MessageNoStories: React.FC<MessageNoStoriesProps> = ({ variant }) => {
     case "own":
       text = "Ви ще нічого не публікували, поділіться своєю першою історією!";
       buttonText = "Опублікувати історію";
-      route = "/new-story";
+      route = "stories/create";
       break;
     case "saved":
       text =
