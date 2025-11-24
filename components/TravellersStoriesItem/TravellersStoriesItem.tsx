@@ -28,7 +28,7 @@ export default function TravellersStoriesItem({
   // стани
   // const ownerId =
   //   typeof story.category !== "string" ? story.ownerId._id : story.ownerId;
-    const ownerId =
+  const ownerId =
     typeof story.ownerId === "string" ? story.ownerId : story.ownerId._id;
 
   const user = useUserAuthStore((state) => state.user);
@@ -124,7 +124,8 @@ export default function TravellersStoriesItem({
   function handleOnCLick() {
     if (!isAuthenticated) return setIsOpenModal(true);
     if (isOwner) {
-      router.push(`/stories/${story._id}`);
+      router.push(`/stories/${story._id}/edit`);
+      return;
     }
     if (isFavourite) {
       removeStory();
