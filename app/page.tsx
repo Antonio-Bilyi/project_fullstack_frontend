@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <Popular />
+      <Popular mobPerPage={3} paginationShow={true} />
       <OurTravellers />
       <Join />
     </>
