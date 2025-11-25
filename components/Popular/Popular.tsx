@@ -43,7 +43,7 @@ const Popular = async ({ paginationShow, mobPerPage, page }: PopularProps) => {
       dehydratedState={dehydratedState}
       mobPerPage={mobPerPage}
       paginationShow={paginationShow}
-      page={page}
+      // page={page}
     />
     // </HydrationBoundary>
   );
