@@ -60,7 +60,7 @@ const StoryByIdPage = async ({ params }: StoryDetailsProps) => {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <StoryDetailsClient />
-      <Popular page={1} mobPerPage={2} paginationShow={false} />
+      <Popular  mobPerPage={2} paginationShow={false} />
     </HydrationBoundary>
   );
 };

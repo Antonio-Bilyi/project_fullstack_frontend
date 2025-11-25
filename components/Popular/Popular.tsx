@@ -3,7 +3,7 @@ import PopularClient from "../PopularClient/PopularClient";
 interface PopularProps {
   paginationShow: boolean;
   mobPerPage: number;
-  page?: number;
+  // page?: number;
 }
 
 import {
@@ -13,7 +13,7 @@ import {
 } from "@tanstack/react-query";
 import { getAllStoriesServer } from "@/lib/api/serverApi/getAllStories";
 
-const Popular = async ({ paginationShow, mobPerPage, page }: PopularProps) => {
+const Popular = async ({ paginationShow, mobPerPage, }: PopularProps) => {
   const queryClient = new QueryClient();
 
   // await queryClient.prefetchQuery({
