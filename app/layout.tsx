@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     title: "Подорожники",
     description:
       "Вебсайт для тих хто живе подорожами і хоче ділитися враженнями",
-    url: "", //тут має бути посилання на задеплоєний проект
+    url: "https://project-fullstack-frontend-p3mv.vercel.app/",
     images: [
       {
         url: "https://project-fullstack-frontend-p3mv.vercel.app/og-image.jpg",
