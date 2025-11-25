@@ -23,6 +23,7 @@ interface PopularClientProps {
   // tabPerPage: number;
   // deskPerPage: number;
   paginationShow: boolean;
+  // page: number;
 }
 
 export default function PopularClient({
@@ -31,6 +32,7 @@ export default function PopularClient({
   // tabPerPage,
   // deskPerPage,
   paginationShow,
+  // page,
 }: PopularClientProps) {
   const [perPage, setPerPage] = useState(mobPerPage);
   const [isPagination, setIsPagination] = useState(paginationShow);

@@ -3,7 +3,7 @@ import type { TravelersResponse } from "@/types/traveller";
 import type { ApiResponse } from '@/types/api';
 // import type { User } from "@/types/user";
 
-export const getAllTravelers = async (page: number, perPage: number): Promise<ApiResponse<TravelersResponse>> => {
+export const getAllTravelers = async (page?: number, perPage?: number): Promise<ApiResponse<TravelersResponse>> => {
 
   try {    
     const response = await nextServer.get<ApiResponse<TravelersResponse>>("/users", {

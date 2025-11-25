@@ -3,7 +3,7 @@ import { nextServer } from '@/lib/api/api';
 import type { TravelersResponse } from "@/types/traveller";
 import { ApiResponse } from "@/types/api";
 
-export const getAllTravelers = async (page: number, perPage: number): Promise<ApiResponse<TravelersResponse>> => {
+export const getAllTravelers = async (page?: number, perPage?: number): Promise<ApiResponse<TravelersResponse>> => {
     const cookiesCurrent = await cookies();
   try {
     
